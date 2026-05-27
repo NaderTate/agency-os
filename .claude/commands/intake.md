@@ -25,7 +25,7 @@ Capture a new lead into the CRM. The argument is a freeform blurb describing the
    - `next_action: Research the business, then send a proposal.`
    - `created:` today's date (YYYY-MM-DD).
 5. In the body, write a one-line **Lead note** capturing the raw blurb and the date.
-6. If a file with that slug already exists, stop and say so — don't overwrite.
+6. If a file with that slug already exists, stop and say so, don't overwrite.
 
 ## Output
 

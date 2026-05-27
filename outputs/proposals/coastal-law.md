@@ -1,17 +1,17 @@
 # Proposal: 24/7 Voice Agent for Coastal Law
 
-**Prepared by Aether AI — 2026-05-20**
+**Prepared by Aether AI, 2026-05-20**
 
 ## The problem
 
-In personal injury, the firm that responds first signs the client. Your intake is staffed 9–5, but accident victims call in the evening, on weekends, after an ER visit — and they're calling several firms at once. Every call that hits voicemail after 5pm is a case that signs with whoever picked up. At the value of a single PI case, that's the most expensive voicemail in the business.
+In personal injury, the firm that responds first signs the client. Your intake is staffed 9-5, but accident victims call in the evening, on weekends, after an ER visit, and they're calling several firms at once. Every call that hits voicemail after 5pm is a case that signs with whoever picked up. At the value of a single PI case, that's the most expensive voicemail in the business.
 
 ## What we'll build
 
 A 24/7 voice agent that runs intake and follow-up so no lead slips:
 
 - **Answers every call, around the clock**, in your firm's voice.
-- **Qualifies the lead** — type of accident, injuries, timing, fault — using your intake criteria.
+- **Qualifies the lead**, type of accident, injuries, timing, fault, using your intake criteria.
 - **Books a consult** with an available attorney on the spot.
 - **Outbound follow-up** on warm leads that didn't book, so a missed first call still becomes a conversation.
 - **Hands off a clean intake summary** to your team for every captured lead.

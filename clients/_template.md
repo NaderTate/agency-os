@@ -25,5 +25,5 @@ Raw blurb captured at intake goes here.
 
 ## Timeline
 
-- 2026-05-27 — Lead captured.
+- 2026-05-27, Lead captured.
 ```

@@ -22,13 +22,13 @@ Residential landscaping + maintenance company. Owner Sofia is in the field all d
 ## Research (2026-05-12)
 
 - Seasonal demand spikes (spring/fall) overwhelm a one-person phone setup; leads are time-sensitive (homeowners call several companies).
-- Most jobs start with a free estimate visit — the booking funnel is "answer the call → schedule the estimate."
-- **Angle:** in home services the company that picks up books the job. An AI receptionist captures every call, books the estimate, and flags urgent work — so leads stop leaking to voicemail during the busy season.
+- Most jobs start with a free estimate visit, the booking funnel is "answer the call → schedule the estimate."
+- **Angle:** in home services the company that picks up books the job. An AI receptionist captures every call, books the estimate, and flags urgent work, so leads stop leaking to voicemail during the busy season.
 
 ## Timeline
 
-- 2026-05-10 — Lead captured from YouTube.
-- 2026-05-12 — Researched the company.
-- 2026-05-13 — Proposal generated → `outputs/proposals/verde-landscaping.md`.
-- 2026-05-15 — Discovery call → signed. Closed-won.
+- 2026-05-10, Lead captured from YouTube.
+- 2026-05-12, Researched the company.
+- 2026-05-13, Proposal generated → `outputs/proposals/verde-landscaping.md`.
+- 2026-05-15, Discovery call → signed. Closed-won.
 ```

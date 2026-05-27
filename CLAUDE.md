@@ -1,6 +1,6 @@
-# CLAUDE.md — AgencyOS
+# CLAUDE.md: AgencyOS
 
-This is **AgencyOS**: the operating system for an AI services agency, running entirely inside Claude Code. No SaaS, no database, no dashboard — the agency is a folder of markdown files, and Claude is the operator that runs it.
+This is **AgencyOS**: the operating system for an AI services agency, running entirely inside Claude Code. No SaaS, no database, no dashboard, the agency is a folder of markdown files, and Claude is the operator that runs it.
 
 > Swap the agency identity in one place: change `AGENCY_NAME` below. Everything (proposals, emails, status board) reads from it.
 
@@ -14,17 +14,31 @@ AGENCY_DOMAIN = AI receptionists, voice agents, and workflow automation for loca
 
 ## What this is
 
-A real CRM + sales + delivery pipeline that lives in `clients/` (one markdown file per client) and `services.md` (the catalog). You drive it with five commands:
+A real CRM + sales + delivery pipeline that lives in `clients/` (one markdown file per client) and `services.md` (the catalog). The work happens through these verbs:
 
-| Command | What it does |
+| Verb | What it does |
 | --- | --- |
 | `/intake "<lead blurb>"` | Turn a raw lead into a structured client file. |
 | `/research <slug>` | Web-research the prospect's business, append findings + a tailored angle. |
 | `/proposal <slug>` | Draft a scoped, priced proposal into `outputs/proposals/`. |
 | `/kickoff <slug>` | Draft the outreach email + put a kickoff/discovery hold on the calendar. |
-| `/status` | Render the whole pipeline — every deal, its stage, the next action, pipeline value, and signed MRR. |
+| `/status` | Render the whole pipeline, every deal, its stage, the next action, pipeline value, and signed MRR. |
+| `/import <csv>` | One-time: lift an existing client list (CSV export or a connected CRM) into the markdown CRM. |
 
-That's the entire business. Add a client, research them, send a proposal, book the call, track delivery — without leaving the terminal.
+That's the entire business. Add a client, research them, send a proposal, book the call, track delivery, without leaving the terminal.
+
+## You don't have to remember the commands
+
+The slash commands are shortcuts, not the only way in. **Just talk in plain English, map what the user says to the right verb and do it.** Nobody should memorize a command list.
+
+- "new lead, Bright Now Dental wants a receptionist, came from YouTube" → run `/intake`.
+- "research them" / "what's their deal?" (about the current client) → run `/research`.
+- "write them a proposal" / "send a quote" → run `/proposal`.
+- "get the call booked" / "email them" → run `/kickoff`.
+- "what's my pipeline?" / "how's the business looking?" / "what should I do next?" → run `/status`.
+- "import my clients from clients.csv" / "pull my list out of HubSpot" → run `/import`.
+
+If a request is ambiguous (e.g. which client), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
 
 ---
 
@@ -32,7 +46,7 @@ That's the entire business. Add a client, research them, send a proposal, book t
 
 On every fresh session, before responding to the first message:
 
-1. Read `services.md` (the catalog + pricing — needed for proposals and `/status` math).
+1. Read `services.md` (the catalog + pricing, needed for proposals and `/status` math).
 2. Glob `clients/*.md` (skip `_template.md`) and read each one's frontmatter block (the fenced `meta` block at the top).
 3. Return a one-screen pipeline snapshot: count of clients per stage, total open pipeline value, signed MRR, and the single most urgent next action. Under 120 words.
 
@@ -60,13 +74,13 @@ created:         2026-05-27
 ```
 
 **Stages and what they mean:**
-- `lead` — captured, not yet researched.
-- `researching` — `/research` has run; findings are in the file.
-- `proposal-sent` — `/proposal` generated a doc in `outputs/proposals/`.
-- `call-booked` — `/kickoff` drafted outreach + put a hold on the calendar.
-- `won` — closed; counts toward signed MRR.
-- `delivering` — active build; counts toward signed MRR.
-- `lost` — dead; excluded from pipeline value and MRR.
+- `lead`, captured, not yet researched.
+- `researching`, `/research` has run; findings are in the file.
+- `proposal-sent`, `/proposal` generated a doc in `outputs/proposals/`.
+- `call-booked`, `/kickoff` drafted outreach + put a hold on the calendar.
+- `won`, closed; counts toward signed MRR.
+- `delivering`, active build; counts toward signed MRR.
+- `lost`, dead; excluded from pipeline value and MRR.
 
 **Pipeline value** = sum of `deal_value` for clients in `lead`, `researching`, `proposal-sent`, `call-booked` (the open funnel).
 **Signed MRR** = sum of `deal_mrr` for clients in `won` + `delivering`.
@@ -78,7 +92,7 @@ created:         2026-05-27
 - **Stay in the agency voice.** Proposals and emails sound like a senior operator at an AI agency: specific, confident, no filler, no hype, no emoji. Lead with the client's problem and the dollars, not the tech stack.
 - **Price from `services.md`.** Never invent pricing. If a deal needs a custom number, base it on the catalog and say so.
 - **One file is the source of truth per client.** When a command changes a deal, update that client's `meta` block (`stage`, `next_action`, and `deal_value`/`deal_mrr` if they firmed up) in the same pass. Never let the board drift from reality.
-- **Ground research in real sources.** `/research` uses real web search. Cite what you found. Never fabricate reviews, addresses, or numbers — if you can't find it, say "couldn't confirm."
+- **Ground research in real sources.** `/research` uses real web search. Cite what you found. Never fabricate reviews, addresses, or numbers, if you can't find it, say "couldn't confirm."
 - **Demo-safe by default.** This workspace ships with mock clients and a demo email (`demo@example.com`). Real outreach (`/kickoff`) only fires against real contact details you add yourself.
 - **Be terse.** No preamble, no narration. Do the thing, show the result.
 
@@ -86,6 +100,6 @@ created:         2026-05-27
 
 ## Setup (for anyone who clones this)
 
-1. Open this folder in Claude Code. That's it for the core — `/intake`, `/research`, `/proposal`, `/status` work out of the box (research uses built-in web search).
+1. Open this folder in Claude Code. That's it for the core, `/intake`, `/research`, `/proposal`, `/status` work out of the box (research uses built-in web search).
 2. **Optional:** to let `/kickoff` draft real emails and calendar holds, connect the **Gmail** and **Google Calendar** integrations in Claude. See `.mcp.json` for notes. Without them, `/kickoff` writes the email + event details to the client file so you can send them by hand.
 3. Edit `services.md` to your own services + pricing, change `AGENCY_NAME` above, and delete the demo clients in `clients/`.

@@ -1,10 +1,10 @@
 # Proposal: AI Receptionist for Verde Landscaping
 
-**Prepared by Aether AI — 2026-05-13**
+**Prepared by Aether AI, 2026-05-13**
 
 ## The problem
 
-You're in the field all day, so calls go to voicemail and you return them at night — by which point half the homeowners have already booked another company. In home services, the company that picks up books the job, and during the spring and fall rush a one-person phone setup can't keep up. Every missed call in season is an estimate you didn't get to quote.
+You're in the field all day, so calls go to voicemail and you return them at night, by which point half the homeowners have already booked another company. In home services, the company that picks up books the job, and during the spring and fall rush a one-person phone setup can't keep up. Every missed call in season is an estimate you didn't get to quote.
 
 ## What we'll build
 
@@ -31,7 +31,7 @@ About 2 weeks: discovery + setup (week 1), build + review and go-live (week 2).
 - **Setup: $2,500** (one-time)
 - **Monthly: $500/mo** (hosting, voice + AI usage, monitoring, and support)
 
-*Example math (your numbers will differ):* in peak season, booking even one extra estimate a week that would have gone to voicemail — and landing a fraction of those jobs — covers the monthly fee many times over.
+*Example math (your numbers will differ):* in peak season, booking even one extra estimate a week that would have gone to voicemail, and landing a fraction of those jobs, covers the monthly fee many times over.
 
 ## Next step
 

@@ -25,5 +25,5 @@ Referral. Busy chiro practice; the single front-desk person can't answer the pho
 
 ## Timeline
 
-- 2026-05-26 — Lead captured (referral).
+- 2026-05-26, Lead captured (referral).
 ```

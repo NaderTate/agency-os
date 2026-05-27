@@ -1,19 +1,19 @@
 # Proposal: AI Receptionist for Lumen Med Spa
 
-**Prepared by Aether AI — 2026-05-22**
+**Prepared by Aether AI, 2026-05-22**
 
 ## The problem
 
-Right now, every call that comes in while your injectors are mid-treatment goes unanswered. For a med spa booking $400–700 a visit, a single missed call isn't a missed call — it's a booking that walks to a competitor. Evenings and weekends, those inquiries hit voicemail and most never call back. And when a client cancels, that chair sits empty for the rest of the day.
+Right now, every call that comes in while your injectors are mid-treatment goes unanswered. For a med spa booking $400-700 a visit, a single missed call isn't a missed call, it's a booking that walks to a competitor. Evenings and weekends, those inquiries hit voicemail and most never call back. And when a client cancels, that chair sits empty for the rest of the day.
 
 ## What we'll build
 
 An AI receptionist that runs your front desk by phone, 24/7:
 
-- **Answers every call** in your spa's voice, day or night — no more voicemail.
+- **Answers every call** in your spa's voice, day or night, no more voicemail.
 - **Books, reschedules, and cancels** against your real calendar, with no double-booking.
 - **Auto-fills cancellations** from a waitlist: when someone cancels, the next client is texted the open slot automatically, so the chair doesn't stay empty.
-- **Recognizes returning clients** by phone number — greets them by name and knows their usual provider.
+- **Recognizes returning clients** by phone number, greets them by name and knows their usual provider.
 - **Texts confirmations and reminders** so people show up.
 
 ## Scope
@@ -24,7 +24,7 @@ An AI receptionist that runs your front desk by phone, 24/7:
 
 ## Timeline
 
-About 2–3 weeks: discovery + setup (week 1), build + your review (week 2), go-live and tuning (week 3).
+About 2-3 weeks: discovery + setup (week 1), build + your review (week 2), go-live and tuning (week 3).
 
 ## Investment
 

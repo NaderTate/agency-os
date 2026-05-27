@@ -1,6 +1,6 @@
 # AgencyOS
 
-**The operating system for an AI services agency — running entirely inside [Claude Code](https://claude.com/claude-code).**
+**The operating system for an AI services agency, running entirely inside [Claude Code](https://claude.com/claude-code).**
 
 No CRM subscription. No project-management SaaS. No database. The whole agency is a folder of markdown files, and Claude is the operator that runs sales and delivery for you:
 
@@ -12,19 +12,24 @@ No CRM subscription. No project-management SaaS. No database. The whole agency i
 /status
 ```
 
-Add a lead, research the business, send a scoped + priced proposal, book the call, track delivery — without leaving the terminal. `/status` reads every client file and prints your live pipeline value and signed MRR. It's just text files, and it tells you the financial state of your business and the next move on every deal.
+Add a lead, research the business, send a scoped + priced proposal, book the call, track delivery, without leaving the terminal. `/status` reads every client file and prints your live pipeline value and signed MRR. It's just text files, and it tells you the financial state of your business and the next move on every deal.
+
+**You don't have to remember any of this.** The slash commands are shortcuts; the real interface is plain English. Say "new lead, Bright Now Dental wants a receptionist" or "what's my pipeline look like?" and it does the right thing.
+
+**Already have an agency?** You don't start from scratch, `/import clients.csv` lifts your existing client list (a CSV export from any CRM, or a connected one like HubSpot/Notion) into the system in one pass. Try it with the included `clients.csv`.
 
 ---
 
-## The five commands
+## The commands (or just talk to it)
 
-| Command | What it does |
-| --- | --- |
-| `/intake "<lead blurb>"` | Turn a raw lead into a structured client file under `clients/`. |
-| `/research <slug>` | Web-research the prospect, append findings + a tailored angle to their file. |
-| `/proposal <slug>` | Draft a scoped, priced proposal into `outputs/proposals/`. |
-| `/kickoff <slug>` | Draft the outreach email + a kickoff/discovery calendar hold. |
-| `/status` | Render the whole pipeline: every deal, its stage, the next action, pipeline value, signed MRR. |
+| Command | Say it like | What it does |
+| --- | --- | --- |
+| `/intake "<lead blurb>"` | "new lead: ..." | Turn a raw lead into a structured client file under `clients/`. |
+| `/research <slug>` | "research them" | Web-research the prospect, append findings + a tailored angle to their file. |
+| `/proposal <slug>` | "write them a proposal" | Draft a scoped, priced proposal into `outputs/proposals/`. |
+| `/kickoff <slug>` | "get the call booked" | Draft the outreach email + a kickoff/discovery calendar hold. |
+| `/status` | "what's my pipeline?" | Render the whole pipeline: every deal, its stage, the next action, pipeline value, signed MRR. |
+| `/import <csv>` | "import my clients" | One-time: lift an existing client list (CSV or a connected CRM) into the CRM. |
 
 ## How it's structured
 
@@ -42,12 +47,12 @@ Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next a
 
 ## Setup
 
-1. **Clone and open in Claude Code.** The core works immediately — `/intake`, `/research`, `/proposal`, and `/status` need nothing but Claude Code (research uses built-in web search).
+1. **Clone and open in Claude Code.** The core works immediately, `/intake`, `/research`, `/proposal`, and `/status` need nothing but Claude Code (research uses built-in web search).
 2. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
 
 ## Make it yours
 
-The demo ships with a fictional AI agency ("Aether AI") and five mock clients across the pipeline so you can see it working. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and delete the demo clients in `clients/`. No real data, no keys — `/kickoff` only sends against contact details you add yourself.
+The demo ships with a fictional AI agency ("Aether AI") and five mock clients across the pipeline so you can see it working. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and delete the demo clients in `clients/`. No real data, no keys, `/kickoff` only sends against contact details you add yourself.
 
 ---
 
