@@ -1,0 +1,54 @@
+# AgencyOS
+
+**The operating system for an AI services agency — running entirely inside [Claude Code](https://claude.com/claude-code).**
+
+No CRM subscription. No project-management SaaS. No database. The whole agency is a folder of markdown files, and Claude is the operator that runs sales and delivery for you:
+
+```
+/intake "Bright Smile Dental, wants an AI receptionist, found me on YouTube"
+/research bright-smile-dental
+/proposal bright-smile-dental
+/kickoff bright-smile-dental
+/status
+```
+
+Add a lead, research the business, send a scoped + priced proposal, book the call, track delivery — without leaving the terminal. `/status` reads every client file and prints your live pipeline value and signed MRR. It's just text files, and it tells you the financial state of your business and the next move on every deal.
+
+---
+
+## The five commands
+
+| Command | What it does |
+| --- | --- |
+| `/intake "<lead blurb>"` | Turn a raw lead into a structured client file under `clients/`. |
+| `/research <slug>` | Web-research the prospect, append findings + a tailored angle to their file. |
+| `/proposal <slug>` | Draft a scoped, priced proposal into `outputs/proposals/`. |
+| `/kickoff <slug>` | Draft the outreach email + a kickoff/discovery calendar hold. |
+| `/status` | Render the whole pipeline: every deal, its stage, the next action, pipeline value, signed MRR. |
+
+## How it's structured
+
+```
+agency-os/
+├── CLAUDE.md            # the OS brain: agency identity, rules, auto-prime
+├── services.md          # your services + pricing (proposals price from this)
+├── clients/             # one markdown file per client = your CRM
+│   └── _template.md
+├── outputs/proposals/   # generated proposals land here
+└── .claude/commands/    # the five commands above
+```
+
+Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action) that `/status` parses, followed by freeform research notes and a timeline.
+
+## Setup
+
+1. **Clone and open in Claude Code.** The core works immediately — `/intake`, `/research`, `/proposal`, and `/status` need nothing but Claude Code (research uses built-in web search).
+2. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
+
+## Make it yours
+
+The demo ships with a fictional AI agency ("Aether AI") and five mock clients across the pipeline so you can see it working. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and delete the demo clients in `clients/`. No real data, no keys — `/kickoff` only sends against contact details you add yourself.
+
+---
+
+Built as a walkthrough for the video **"I Turned Claude Code Into the OS That Runs My AI Agency."** Free to clone and use.

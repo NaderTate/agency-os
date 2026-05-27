@@ -1,0 +1,10 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+
+# If you add real client data, keep it out of the public repo:
+# clients/real-*.md

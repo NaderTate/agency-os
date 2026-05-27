@@ -1,0 +1,7 @@
+{
+  "//": "AgencyOS optional integrations. The core commands (/intake, /research, /proposal, /status) need NO MCP servers — research uses Claude Code's built-in web search. Only /kickoff benefits from email + calendar.",
+  "//gmail": "Connect Gmail in Claude (Settings → Connectors, or the Claude.ai integrations page) to let /kickoff draft real outreach emails. It is a user-level connector, not a project server, so it does not need an entry here.",
+  "//calendar": "Connect Google Calendar the same way to let /kickoff place kickoff/discovery holds.",
+  "//note": "Without these connected, /kickoff still works: it writes the email body + event details into the client file so you can send them manually.",
+  "mcpServers": {}
+}
