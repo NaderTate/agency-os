@@ -5,10 +5,10 @@
 No CRM subscription. No project-management SaaS. No database. The whole agency is a folder of markdown files, and Claude is the operator that runs sales and delivery for you:
 
 ```
-/intake "Bright Smile Dental, wants an AI receptionist, found me on YouTube"
-/research bright-smile-dental
-/proposal bright-smile-dental
-/kickoff bright-smile-dental
+/intake "Bright Now Dental, wants an AI receptionist, found me on YouTube"
+/research bright-now-dental
+/proposal bright-now-dental
+/kickoff bright-now-dental
 /status
 ```
 
@@ -37,22 +37,24 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 agency-os/
 ├── CLAUDE.md            # the OS brain: agency identity, rules, auto-prime
 ├── services.md          # your services + pricing (proposals price from this)
-├── clients/             # one markdown file per client = your CRM
+├── clients/             # one markdown file per client = your CRM (ships empty)
 │   └── _template.md
+├── clients.csv          # sample client list, try /import on it
 ├── outputs/proposals/   # generated proposals land here
-└── .claude/commands/    # the five commands above
+└── .claude/commands/    # the commands above
 ```
 
 Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action) that `/status` parses, followed by freeform research notes and a timeline.
 
 ## Setup
 
-1. **Clone and open in Claude Code.** The core works immediately, `/intake`, `/research`, `/proposal`, and `/status` need nothing but Claude Code (research uses built-in web search).
-2. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
+1. **Clone and open in Claude Code.** The core works immediately, `/intake`, `/research`, `/proposal`, `/status`, and `/import` need nothing but Claude Code (research uses built-in web search).
+2. **See it populated:** the CRM ships empty. Run `/import clients.csv` (or say "import my clients from clients.csv") to fill it with a sample pipeline, then try `/status`.
+3. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
 
 ## Make it yours
 
-The demo ships with a fictional AI agency ("Aether AI") and five mock clients across the pipeline so you can see it working. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and delete the demo clients in `clients/`. No real data, no keys, `/kickoff` only sends against contact details you add yourself.
+The CRM ships empty with a sample `clients.csv` and a fictional agency identity ("Aether AI") so you can see it working in one import. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and import or `/intake` your own clients. No real data, no keys, `/kickoff` only sends against contact details you add yourself.
 
 ---
 

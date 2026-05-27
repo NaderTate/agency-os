@@ -12,7 +12,7 @@ Capture a new lead into the CRM. The argument is a freeform blurb describing the
 
 1. Read `services.md` so you can map the lead's interest to a real service + price.
 2. Extract from the blurb (infer what's reasonable; mark unknowns as `(unknown yet)`):
-   - **Business name** → also derive a **slug** (lowercase, words joined by hyphens, no punctuation; e.g. "Bright Smile Dental" → `bright-smile-dental`).
+   - **Business name** → also derive a **slug** (lowercase, words joined by hyphens, no punctuation; e.g. "Bright Now Dental" → `bright-now-dental`).
    - **Vertical** (Dental, Med spa, Law, Home services, Auto, etc.).
    - **Service interest** (match to a `services.md` offering; default to "AI receptionist" if they describe missed calls / front-desk pain).
    - **Source** (YouTube, referral, cold inbound, etc.).

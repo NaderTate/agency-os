@@ -59,8 +59,8 @@ This primes you to operate the agency immediately. The full per-deal breakdown i
 Every client is one file at `clients/<slug>.md`. The top is a fenced ` ```meta ` block that `/status` parses; the rest is freeform research + timeline. See `clients/_template.md`.
 
 ```meta
-name:            Bright Smile Dental
-slug:            bright-smile-dental
+name:            Bright Now Dental
+slug:            bright-now-dental
 stage:           lead          # lead → researching → proposal-sent → call-booked → won → delivering → lost
 vertical:        Dental
 contact_name:    (unknown yet)
@@ -102,4 +102,4 @@ created:         2026-05-27
 
 1. Open this folder in Claude Code. That's it for the core, `/intake`, `/research`, `/proposal`, `/status` work out of the box (research uses built-in web search).
 2. **Optional:** to let `/kickoff` draft real emails and calendar holds, connect the **Gmail** and **Google Calendar** integrations in Claude. See `.mcp.json` for notes. Without them, `/kickoff` writes the email + event details to the client file so you can send them by hand.
-3. Edit `services.md` to your own services + pricing, change `AGENCY_NAME` above, and delete the demo clients in `clients/`.
+3. Edit `services.md` to your own services + pricing, change `AGENCY_NAME` above, and import or `/intake` your own clients (the CRM ships empty; `clients.csv` is just a sample to try `/import` on).

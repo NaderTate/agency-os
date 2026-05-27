@@ -18,34 +18,40 @@ The agency at a glance, computed live from the client files.
 4. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`).
 5. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
 
-## Output format (this is the shape; numbers below match the shipped seed)
+## Output format (illustrative: the shape after importing the sample `clients.csv`)
+
+The repo ships with an empty `clients/` folder, so a fresh `/status` shows an empty pipeline ($0). After `/import clients.csv` the board looks like this:
 
 ```
 AETHER AI / PIPELINE
 
 LEAD
-  Northside Chiropractic (Chiropractic): $2,500 / $500 mo. Next: Research the practice, then send a proposal.
+  Glow Aesthetics (Med spa): $2,500 / $500 mo. Next: Research the business, then send a proposal.
+  Bella Vita Salon (Salon): $1,500 / $0 mo. Next: Research the business, then send a proposal.
 
 PROPOSAL-SENT
-  Lumen Med Spa (Med spa): $2,500 / $500 mo. Next: Follow up / book the discovery call.
+  Summit Dental Group (Dental): $2,500 / $500 mo. Next: Follow up / book the discovery call.
 
 CALL-BOOKED
-  Coastal Law (Law): $5,000 / $1,000 mo. Next: Run the discovery call.
+  Harbor Family Law (Law): $5,000 / $1,000 mo. Next: Run the discovery call.
 
 DELIVERING
-  Apex Auto Repair (Auto): $5,000 / $1,000 mo. Next: Ship the week-2 milestone (booking + status-update flows live).
+  Citywide HVAC (Home services): $5,000 / $1,000 mo. Next: Ship the current milestone.
 
 WON
-  Verde Landscaping (Home services): $2,500 / $500 mo. Next: Kick off the build (provision number, seed schedule, go live).
+  Peak Performance PT (Physical therapy): $2,500 / $500 mo. Next: Kick off the build.
+
+LOST
+  Crestview Realty Partners (Real estate): $0 / $0 mo. (closed lost)
 
 ──────────────────────────────
-Open pipeline value:  $10,000     (lead + researching + proposal-sent + call-booked)
+Open pipeline value:  $11,500     (lead + researching + proposal-sent + call-booked)
 Signed MRR:           $1,500 /mo   (~$18,000/yr)   (won + delivering)
 
 DO NEXT
-  1. Coastal Law: run the discovery call.
-  2. Lumen Med Spa: follow up on the proposal.
-  3. Northside Chiropractic: research + propose.
+  1. Harbor Family Law: run the discovery call.
+  2. Summit Dental Group: follow up on the proposal.
+  3. Glow Aesthetics: research + propose.
 ```
 
-(After you `/intake` a new lead, that deal's `deal_value` is added to the open pipeline total, so the number you see here moves the moment a lead enters the system.)
+(After you `/intake` a new lead, its `deal_value` is added to the open pipeline total, so the number moves the moment a lead enters the system.)
