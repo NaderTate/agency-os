@@ -18,6 +18,8 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 
 **Already have an agency?** You don't start from scratch, `/import clients.csv` lifts your existing client list (a CSV export from any CRM, or a connected one like HubSpot/Notion) into the system in one pass. Try it with the included `clients.csv`.
 
+**It runs delivery too, not just sales.** A team lives in `team/`; staff people onto active clients with `/assign`, and `/status` shows your **margin** (revenue minus team cost), plus `/team` shows who's loaded and who's free.
+
 ---
 
 ## The commands (or just talk to it)
@@ -28,8 +30,10 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 | `/research <slug>` | "research them" | Web-research the prospect, append findings + a tailored angle to their file. |
 | `/proposal <slug>` | "write them a proposal" | Draft a scoped, priced proposal into `outputs/proposals/`. |
 | `/kickoff <slug>` | "get the call booked" | Draft the outreach email + a kickoff/discovery calendar hold. |
-| `/status` | "what's my pipeline?" | Render the whole pipeline: every deal, its stage, the next action, pipeline value, signed MRR. |
+| `/status` | "what's my pipeline / margin?" | Render the pipeline + pipeline value, signed MRR, and net margin. |
 | `/import <csv>` | "import my clients" | One-time: lift an existing client list (CSV or a connected CRM) into the CRM. |
+| `/team` | "who's free?" | Show the roster, each person's utilization, and who's on which client. |
+| `/assign <member> <client> <hrs>` | "put Maya on Citywide" | Staff a team member onto a client (drives utilization + margin). |
 
 ## How it's structured
 
@@ -40,11 +44,14 @@ agency-os/
 ├── clients/             # one markdown file per client = your CRM (ships empty)
 │   └── _template.md
 ├── clients.csv          # sample client list, try /import on it
+├── team/                # one markdown file per team member (rate, capacity)
+│   ├── _template.md
+│   └── maya-chen.md, devon-brooks.md, priya-nair.md   # sample roster
 ├── outputs/proposals/   # generated proposals land here
 └── .claude/commands/    # the commands above
 ```
 
-Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action) that `/status` parses, followed by freeform research notes and a timeline.
+Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action, and team assignments) that `/status` parses, followed by freeform research notes and a timeline. Team members are staffed onto clients via a `team:` line in that header (`slug:hours-per-week`), which is what powers utilization and margin.
 
 ## Setup
 

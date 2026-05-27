@@ -8,15 +8,20 @@ The agency at a glance, computed live from the client files.
 
 ## Procedure
 
-1. Glob `clients/*.md` and read each one **except `_template.md`**. Parse the fenced `meta` block at the top of each (name, stage, vertical, deal_value, deal_mrr, next_action).
-2. **Compute the numbers** (state them, don't hand-wave):
+1. Glob `clients/*.md` and read each one **except `_template.md`**. Parse the fenced `meta` block at the top of each (name, stage, vertical, deal_value, deal_mrr, next_action, and `team:` if present).
+2. **Compute the pipeline numbers** (state them, don't hand-wave):
    - **Open pipeline value** = sum of `deal_value` for every client whose stage is `lead`, `researching`, `proposal-sent`, or `call-booked`.
    - **Signed MRR** = sum of `deal_mrr` for every client whose stage is `won` or `delivering`.
    - **Annualized signed** = Signed MRR × 12 (one-line aside).
    - Exclude any client with stage `lost` from both totals.
-3. **Render the board**, grouped by stage in pipeline order (`lead → researching → proposal-sent → call-booked → won → delivering`, then `lost` last if any). For each client show one line: `Business (vertical): $value setup / $mrr per mo. Next: <next_action>`.
-4. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`).
-5. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
+3. **Compute margin** (only for `won` + `delivering` clients, the ones generating revenue). For each, read the `team:` field (`slug:hours_per_week` entries), look up each member's `rate` in `team/<slug>.md`, and:
+   - **Monthly team cost** = Σ (`rate` × `hours_per_week` × 4). (4 weeks/month, a deliberate simplification for clean math.)
+   - **Client margin** = `deal_mrr` − monthly team cost.
+   - **Agency net margin** = total Signed MRR − total monthly team cost across those clients.
+   - If a client has no `team:` assignments, its cost is $0 (so margin = full MRR) until you `/assign` someone.
+4. **Render the board**, grouped by stage in pipeline order (`lead → researching → proposal-sent → call-booked → won → delivering`, then `lost` last if any). For each client show one line: `Business (vertical): $value setup / $mrr per mo. Next: <next_action>`.
+5. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`).
+6. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
 
 ## Output format (illustrative: the shape after importing the sample `clients.csv`)
 
@@ -48,10 +53,16 @@ LOST
 Open pipeline value:  $11,500     (lead + researching + proposal-sent + call-booked)
 Signed MRR:           $1,500 /mo   (~$18,000/yr)   (won + delivering)
 
+MARGIN (won + delivering)
+  Citywide HVAC:        $1,000 mo - $520 cost = $480 margin (48%)   [maya-chen 2h]
+  Peak Performance PT:  $500 mo - $280 cost = $220 margin (44%)     [priya-nair 2h]
+  ──────
+  Net margin:           $1,500 mo - $800 cost = $700 /mo (47%)
+
 DO NEXT
   1. Harbor Family Law: run the discovery call.
   2. Summit Dental Group: follow up on the proposal.
   3. Glow Aesthetics: research + propose.
 ```
 
-(After you `/intake` a new lead, its `deal_value` is added to the open pipeline total, so the number moves the moment a lead enters the system.)
+(The MARGIN block above assumes you've staffed the two delivering/won clients via `/assign` (e.g. `maya-chen` 2 hrs/wk on Citywide, `priya-nair` 2 hrs/wk on Peak). Before any `/assign`, team cost is $0 and margin equals full MRR. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)

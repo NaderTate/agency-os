@@ -14,7 +14,7 @@ AGENCY_DOMAIN = AI receptionists, voice agents, and workflow automation for loca
 
 ## What this is
 
-A real CRM + sales + delivery pipeline that lives in `clients/` (one markdown file per client) and `services.md` (the catalog). The work happens through these verbs:
+It runs both sides of the agency: **sales** (a CRM + pipeline in `clients/`, priced from `services.md`) and **delivery** (a team in `team/` staffed onto active clients, with cost and margin). The work happens through these verbs:
 
 | Verb | What it does |
 | --- | --- |
@@ -22,10 +22,12 @@ A real CRM + sales + delivery pipeline that lives in `clients/` (one markdown fi
 | `/research <slug>` | Web-research the prospect's business, append findings + a tailored angle. |
 | `/proposal <slug>` | Draft a scoped, priced proposal into `outputs/proposals/`. |
 | `/kickoff <slug>` | Draft the outreach email + put a kickoff/discovery hold on the calendar. |
-| `/status` | Render the whole pipeline, every deal, its stage, the next action, pipeline value, and signed MRR. |
+| `/status` | Render the whole pipeline + pipeline value, signed MRR, and net margin. |
 | `/import <csv>` | One-time: lift an existing client list (CSV export or a connected CRM) into the markdown CRM. |
+| `/team` | Show the team roster, each person's utilization, and who's on which client. |
+| `/assign <member> <client> <hrs/wk>` | Staff a team member onto a client (this drives utilization + margin). |
 
-That's the entire business. Add a client, research them, send a proposal, book the call, track delivery, without leaving the terminal.
+That's the entire business. Add a client, research them, send a proposal, book the call, staff the team, track margin, without leaving the terminal.
 
 ## You don't have to remember the commands
 
@@ -35,10 +37,13 @@ The slash commands are shortcuts, not the only way in. **Just talk in plain Engl
 - "research them" / "what's their deal?" (about the current client) → run `/research`.
 - "write them a proposal" / "send a quote" → run `/proposal`.
 - "get the call booked" / "email them" → run `/kickoff`.
-- "what's my pipeline?" / "how's the business looking?" / "what should I do next?" → run `/status`.
+- "what's my pipeline?" / "how's the business looking?" / "what should I do next?" / "what's my margin?" → run `/status`.
 - "import my clients from clients.csv" / "pull my list out of HubSpot" → run `/import`.
+- "who's on my team?" / "who's free?" / "how loaded is everyone?" → run `/team`.
+- "put Maya on Citywide for 2 hours a week" / "staff Devon on that build" → run `/assign`.
+- "add a voice engineer named Maya at $65 an hour, 30 hours a week" → create `team/maya-chen.md` from `team/_template.md` (a hire; no dedicated command, just do it).
 
-If a request is ambiguous (e.g. which client), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
+If a request is ambiguous (e.g. which client or member), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
 
 ---
 
@@ -47,10 +52,11 @@ If a request is ambiguous (e.g. which client), ask one short question. If it cle
 On every fresh session, before responding to the first message:
 
 1. Read `services.md` (the catalog + pricing, needed for proposals and `/status` math).
-2. Glob `clients/*.md` (skip `_template.md`) and read each one's frontmatter block (the fenced `meta` block at the top).
-3. Return a one-screen pipeline snapshot: count of clients per stage, total open pipeline value, signed MRR, and the single most urgent next action. Under 120 words.
+2. Glob `clients/*.md` (skip `_template.md`) and read each one's `meta` block (including any `team:` assignments).
+3. Glob `team/*.md` (skip `_template.md`) and read each member's `meta` block.
+4. Return a one-screen snapshot: count of clients per stage, open pipeline value, signed MRR, net margin, free team capacity, and the single most urgent next action. Under 120 words.
 
-This primes you to operate the agency immediately. The full per-deal breakdown is what `/status` prints on demand.
+This primes you to operate the agency immediately. The full breakdowns are what `/status` and `/team` print on demand.
 
 ---
 
@@ -87,13 +93,35 @@ created:         2026-05-27
 
 ---
 
+## The team (delivery side)
+
+Every team member is one file at `team/<slug>.md` with a `meta` block: `name, slug, role, status (active/bench/inactive), rate (agency cost, USD/hr), capacity (billable hrs/week), skills`. See `team/_template.md`.
+
+**Staffing** lives on the client, not the member, because margin is per-project. A client's `meta` block can carry a `team:` line listing assignments as `slug:hours_per_week`, comma-separated:
+
+```
+team: maya-chen:2, priya-nair:1
+```
+
+`/assign` writes this; `/team` and `/status` read it. Derived numbers (computed live, never stored):
+
+- **Monthly team cost (client)** = Σ (`member.rate` × `hours_per_week` × 4). The ×4 is a deliberate weeks-per-month simplification so the math stays clean on screen.
+- **Margin (client)** = `deal_mrr` − monthly team cost. Only meaningful for `won` + `delivering`.
+- **Utilization (member)** = Σ their `hours_per_week` across all clients ÷ `capacity`. Over 100% = overallocated; 0% = on the bench.
+- **Net margin (agency)** = total Signed MRR − total monthly team cost.
+
+A client with no `team:` line has $0 cost (margin = full MRR) until you `/assign` someone.
+
+---
+
 ## Operating rules
 
 - **Stay in the agency voice.** Proposals and emails sound like a senior operator at an AI agency: specific, confident, no filler, no hype, no emoji. Lead with the client's problem and the dollars, not the tech stack.
 - **Price from `services.md`.** Never invent pricing. If a deal needs a custom number, base it on the catalog and say so.
 - **One file is the source of truth per client.** When a command changes a deal, update that client's `meta` block (`stage`, `next_action`, and `deal_value`/`deal_mrr` if they firmed up) in the same pass. Never let the board drift from reality.
 - **Ground research in real sources.** `/research` uses real web search. Cite what you found. Never fabricate reviews, addresses, or numbers, if you can't find it, say "couldn't confirm."
-- **Demo-safe by default.** This workspace ships with mock clients and a demo email (`demo@example.com`). Real outreach (`/kickoff`) only fires against real contact details you add yourself.
+- **Price and cost from the files.** Pricing comes from `services.md`; team cost comes from each member's `rate` in `team/`. Never invent either.
+- **Demo-safe by default.** The CRM ships empty (a sample `clients.csv` is there to `/import`); a small sample team roster ships in `team/`; the demo email is `demo@example.com`. Real outreach (`/kickoff`) only fires against real contact details you add yourself.
 - **Be terse.** No preamble, no narration. Do the thing, show the result.
 
 ---

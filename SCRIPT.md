@@ -171,6 +171,35 @@ new lead: Bright Now Dental in Austin, wants an AI receptionist, found me on You
 
 ---
 
+## 3.5 THE DELIVERY SIDE, team + margin (optional beat)
+
+> Include this if you want the "it runs my whole agency, not just sales" payoff. Cut it if the video is running long, the sales loop stands on its own.
+
+**[SAY]**
+> "That's the sales side. But this runs my delivery too. I have a team."
+
+**[DEMO]** Run `/team`.
+
+**[SHOW]** The roster: three people with their rates and capacity, mostly on the bench (no clients assigned yet).
+
+**[SAY]**
+> "Three people, their hourly cost, their weekly capacity. Nobody's staffed yet. Let me put them on my two live clients. And again, plain English."
+
+**[DEMO]** Assign by talking to it:
+```
+put Maya on Citywide for 2 hours a week, and Priya on Peak Performance for 2
+```
+(Slash form: `/assign maya-chen citywide-hvac 2` then `/assign priya-nair peak-performance-pt 2`.)
+
+**[DEMO]** Now run `/status` (or "what's my margin?").
+
+**[SHOW]** The new MARGIN section: Citywide $1,000 - $520 = $480 (48%), Peak $500 - $280 = $220 (44%), net margin $700/mo (47%).
+
+**[SAY]** (business-value anchor)
+> "Now it's not showing me revenue, it's showing me profit. Fifteen hundred a month coming in, eight hundred in team cost, seven hundred net. And look at the team, barely loaded, which means I have the capacity to take on way more clients before I hire. That's the whole business, sales and delivery, in a folder of text files."
+
+---
+
 ## 4. THE RECAP (12:30 - 13:30)
 
 **[DEMO]** Run `/status` one more time.
