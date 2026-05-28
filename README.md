@@ -43,21 +43,23 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 
 ```
 agency-os/
-├── CLAUDE.md            # the OS brain: agency identity, rules, auto-prime
-├── services.md          # your services + pricing (proposals price from this)
-├── clients/             # one markdown file per client = your CRM (ships empty)
+├── CLAUDE.md            # the OS brain: rules, auto-prime, command routing
+├── business.md          # WHO you are: identity, mission, ICP, positioning, brand voice
+├── goals.md             # WHERE you're going: north star, quarterly targets, KPIs
+├── services.md          # WHAT you sell: catalog + pricing (proposals price from here)
+├── clients/             # WHO you serve: one md per client = your CRM (ships empty)
 │   └── _template.md
 ├── clients.csv          # sample client list, try /import on it
-├── team/                # one markdown file per team member (rate, capacity)
+├── team/                # WHO does the work: one md per team member (rate, capacity)
 │   ├── _template.md
 │   └── maya-chen.md, devon-brooks.md, priya-nair.md   # sample roster
 ├── finance/
-│   └── invoices.md      # the AR ledger (one table, one row per invoice)
+│   └── invoices.md      # WHO OWES you: the AR ledger
 ├── outputs/proposals/   # generated proposals land here
 └── .claude/commands/    # the commands above
 ```
 
-Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action, and team assignments) that `/status` parses, followed by freeform research notes and a timeline. Team members are staffed onto clients via a `team:` line in that header (`slug:hours-per-week`), which is what powers utilization and margin.
+The top three files (`business.md`, `goals.md`, `services.md`) are the **context layer**, Claude reads them every session so it knows who you are and what you're going for. Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action, team assignments) that `/status` parses, plus freeform research and a timeline. Team members are staffed onto clients via a `team:` line in that header (`slug:hours-per-week`), which powers utilization and margin.
 
 ## Setup
 
@@ -67,7 +69,13 @@ Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next a
 
 ## Make it yours
 
-The CRM ships empty with a sample `clients.csv` and a fictional agency identity ("Aether AI") so you can see it working in one import. To make it your own: set `AGENCY_NAME` in `CLAUDE.md`, replace `services.md` with your offerings + pricing, and import or `/intake` your own clients. No real data, no keys, `/kickoff` only sends against contact details you add yourself.
+The repo ships with a fictional agency identity ("Aether AI") in `business.md`, a sample strategy in `goals.md`, an empty CRM, and a sample `clients.csv` to import. Three files make it yours:
+
+1. **`business.md`** sets your identity, mission, ICP, positioning, brand voice.
+2. **`goals.md`** sets your north star, this-quarter targets, and the KPIs you care about.
+3. **`services.md`** sets your offerings + pricing.
+
+Then import or `/intake` your own clients. No real data, no keys, `/kickoff` only sends against contact details you add yourself.
 
 ---
 

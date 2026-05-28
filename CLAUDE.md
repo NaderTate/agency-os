@@ -2,13 +2,7 @@
 
 This is **AgencyOS**: the operating system for an AI services agency, running entirely inside Claude Code. No SaaS, no database, no dashboard, the agency is a folder of markdown files, and Claude is the operator that runs it.
 
-> Swap the agency identity in one place: change `AGENCY_NAME` below. Everything (proposals, emails, status board) reads from it.
-
-```
-AGENCY_NAME   = Aether AI
-AGENCY_OWNER  = Nader
-AGENCY_DOMAIN = AI receptionists, voice agents, and workflow automation for local service businesses
-```
+> The agency's identity, mission, ICP, and brand voice live in **`business.md`**. The strategy, targets, and KPIs live in **`goals.md`**. Edit those two files to make this OS yours, every command downstream reads from them.
 
 ---
 
@@ -56,12 +50,15 @@ If a request is ambiguous (e.g. which client or member), ask one short question.
 
 On every fresh session, before responding to the first message:
 
-1. Read `services.md` (the catalog + pricing, needed for proposals and `/status` math).
-2. Glob `clients/*.md` (skip `_template.md`) and read each one's `meta` block (including any `team:` assignments).
-3. Glob `team/*.md` (skip `_template.md`) and read each member's `meta` block.
-4. Return a one-screen snapshot: count of clients per stage, open pipeline value, signed MRR, net margin, free team capacity, and the single most urgent next action. Under 120 words.
+1. Read `business.md` (identity, mission, ICP, positioning, brand voice).
+2. Read `goals.md` (north star, this-quarter targets, KPIs).
+3. Read `services.md` (the catalog + pricing, needed for proposals and `/status` math).
+4. Glob `clients/*.md` (skip `_template.md`) and read each one's `meta` block (including any `team:` assignments).
+5. Glob `team/*.md` (skip `_template.md`) and read each member's `meta` block.
+6. If `finance/invoices.md` exists, read the ledger (so AR is in context).
+7. Return a one-screen snapshot: clients per stage, open pipeline value, signed MRR **vs the north star** from `goals.md`, net margin, AR outstanding + overdue, free team capacity, and the single most urgent next action (overdue invoices outrank everything). Under 130 words.
 
-This primes you to operate the agency immediately. The full breakdowns are what `/status` and `/team` print on demand.
+This primes you with the full operating context: who the agency is (business), where it's headed (goals), what it sells (services), the live pipeline (clients), the team (team), and what's owed (invoices). The detail breakdowns are what `/status`, `/team`, and `/invoices` print on demand.
 
 ---
 
@@ -145,4 +142,4 @@ Invoices live in `finance/invoices.md`, a single markdown-table ledger. Each row
 
 1. Open this folder in Claude Code. That's it for the core, `/intake`, `/research`, `/proposal`, `/status` work out of the box (research uses built-in web search).
 2. **Optional:** to let `/kickoff` draft real emails and calendar holds, connect the **Gmail** and **Google Calendar** integrations in Claude. See `.mcp.json` for notes. Without them, `/kickoff` writes the email + event details to the client file so you can send them by hand.
-3. Edit `services.md` to your own services + pricing, change `AGENCY_NAME` above, and import or `/intake` your own clients (the CRM ships empty; `clients.csv` is just a sample to try `/import` on).
+3. Make it yours: edit `business.md` (identity, ICP, voice), `goals.md` (north star, quarterly targets, KPIs), and `services.md` (offerings + pricing). Then import or `/intake` your own clients (the CRM ships empty; `clients.csv` is just a sample to try `/import` on).
