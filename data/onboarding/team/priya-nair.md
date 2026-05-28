@@ -1,13 +1,3 @@
-```meta
-name:      Priya Nair
-slug:      priya-nair
-role:      Client success / support
-status:    active
-rate:      35
-capacity:  20
-skills:    onboarding, QA, support, client comms, documentation
-```
-
 # Priya Nair
 
 ## Notes

@@ -7,7 +7,7 @@
 > Format being replicated: "How I Turned Claude Code Into [the system that runs my X]", highest-momentum format in the 2026-05-24 discovery run (8.84). Proof: AI Edge "personal assistant" 97k, Claude official "proactive agent workflow" 55k.
 >
 > **The one rule for this video:** three moments must happen live on camera, because they are what make this real and not a toy:
-> 1. The **import reveal**: one client becomes a full agency in one command, and you do it on top of a real existing delivery (Brookside).
+> 1. The **import reveal**: an empty folder becomes a full agency + a roster in two commands (clients CSV + team CSV).
 > 2. The live **`/research`** finding a real business's real pain (unanswered phones) on its own.
 > 3. **`/status`** computing real pipeline numbers from plain text files.
 > Don't cut around them.
@@ -28,30 +28,34 @@ Each section has three tracks:
 - **[SHOW]**, what's on screen.
 - **[DEMO]**, exact commands to run.
 
-You film starting from **one pre-seeded delivering client**, Brookside Animal Hospital (the vet build that started the agency, $1,000/mo MRR). The rest of the pipeline is in `clients.csv` and you import it live. Then you create a brand new lead (**Bright Now Dental**) on top.
+You film starting from a **fully empty agency**: `clients/` has only `_template.md`, `team/` has only `_template.md`. The repo ships two CSV exports (`clients.csv`, `team.csv`) that you import live to populate everything. Then you create a brand new lead (**Bright Now Dental**) on top.
 
 ---
 
-## 0. COLD OPEN, the transformation (0:00 - 0:50)
+## 0. COLD OPEN, the transformation (0:00 - 1:00)
 
-> The strongest moment goes first (Playbook H1). Here it's the import: one client becomes a whole agency in one command, on top of a real existing delivery.
+> The strongest moment goes first (Playbook H1). Here it's the **two imports**: an empty folder becomes a whole agency with a roster, in two commands.
 
-**[DEMO]** Start on the seeded state. Run `/status` so the board shows: 1 DELIVERING client (Brookside Animal Hospital, $1,000/mo MRR), nothing else.
+**[DEMO]** Start on the empty state. Run `/status` so the board shows an empty pipeline ($0). Have `clients.csv` and `team.csv` open in another tab.
 
-**[SHOW]** Full-screen terminal: `/status` shows only the DELIVERING section with Brookside, `Open pipeline value: $0`, `Signed MRR: $1,000/mo`.
-
-**[SAY]**
-> "This is my AI agency right now. One delivering client, my first one, a vet clinic build. A grand a month coming in, no open pipeline. I'm about to triple that in one command."
-
-**[DEMO]** Run the import (say it in plain English to make the point early):
-```
-import my clients from clients.csv
-```
-
-**[SHOW]** Claude creates a client file per row and prints the result. Then run `/status`: the board fills, `Open pipeline value: $11,500`, `Signed MRR: $2,500/mo`.
+**[SHOW]** Full-screen terminal: empty `/status`. Then a beat on the two CSVs so the viewer sees they're real spreadsheet exports.
 
 **[SAY]**
-> "And there's the agency. Brookside still delivering, plus seven more clients across the pipeline. Eleven and a half grand in open pipeline, twenty-five hundred a month recurring, the next move on every deal. Pulled out of a CSV in seconds. And it's not a CRM, it's a folder of text files, and Claude Code runs the whole thing. Spell that, C-L-A-U-D-E Code. Let me show you how."
+> "Brand new AI agency. No clients. No team. Nothing. I have two CSV exports, one of my clients, one of my team, the kind of thing you'd pull out of any CRM. Watch me set the whole agency up in two commands."
+
+**[DEMO]** Run the imports (plain English to make the point early):
+```
+onboard my clients from clients.csv
+```
+Then:
+```
+onboard my team from team.csv
+```
+
+**[SHOW]** Claude creates a client file per row, then a team file per row. Run `/status`: the board fills, `Open pipeline value: $11,500`, `Signed MRR: $2,500/mo`. Run `/team`: 3 members, capacity 75 hrs/wk.
+
+**[SAY]**
+> "That's the agency. Eight clients across the pipeline, eleven and a half grand open, twenty-five hundred a month recurring. Three-person team, seventy-five hours of weekly capacity. Pulled out of two spreadsheets in seconds. And it's not a CRM, it's a folder of text files, and Claude Code runs the whole thing. Spell that, C-L-A-U-D-E Code. Let me show you how."
 
 **[SHOW]** On-screen label: `Claude Code`.
 
@@ -85,7 +89,7 @@ import my clients from clients.csv
 **[SHOW]** `services.md`, the services table.
 
 **[SAY]**
-> "Third, the `clients` folder. This is the CRM. Brookside was the only one in here 90 seconds ago, the others got created from the CSV. The import read each row and made one markdown file per client, even mapping their old stage names, 'Closed Won', 'Meeting Booked', onto mine."
+> "Third, the `clients` folder. This is the CRM, and it was empty 90 seconds ago. The import read each row of the clients CSV and made one markdown file per client, even mapping their old stage names, 'Closed Won', 'Meeting Booked', onto mine. The team folder filled up the same way from the team CSV. Same pattern for both."
 
 **[SHOW]** Open one imported client, e.g. `clients/harbor-family-law.md`. Highlight the ` ```meta ` block (stage, deal value, monthly, next action), then the body.
 
@@ -180,10 +184,10 @@ new lead: Bright Now Dental in Austin, wants an AI receptionist, found me on You
 
 **[DEMO]** Run `/team`.
 
-**[SHOW]** The roster: three people with their rates and capacity. Maya already on Brookside (2 hrs/wk from the pre-seeded delivering build), Devon on the bench, Priya on the bench.
+**[SHOW]** The roster: three people with their rates and capacity. Maya already on Brookside (2 hrs/wk from the import data, the CSV carried her assignment), Devon on the bench, Priya on the bench.
 
 **[SAY]**
-> "Three people. Maya's already running Brookside, the vet build. The other two are free. Let me staff the rest of the live work. Plain English."
+> "Three people, just imported. Maya's already on Brookside, the vet build, because that assignment came across in the spreadsheet. The other two are free. Let me staff the rest of the live work. Plain English."
 
 **[DEMO]** Assign by talking to it:
 ```
@@ -239,7 +243,7 @@ how's the team doing?
 **[SHOW]** The full board: Brookside still delivering, the imported clients across the pipeline, plus Bright Now Dental in `call-booked`. Open pipeline `$14,000`, MRR `$2,500/mo`.
 
 **[SAY]**
-> "Fifteen minutes ago this was one client. Now it's a running agency, the rest of the book imported, a brand new lead taken from cold to a drafted booking, and I never left the terminal. The whole financial state of the business, recomputed from text files every time I ask."
+> "Fifteen minutes ago this was an empty folder. Now it's a running agency: clients imported, team imported, a brand new lead taken from cold to a drafted booking, and I never left the terminal. The whole financial state of the business, recomputed from text files every time I ask."
 
 ---
 
@@ -265,9 +269,9 @@ how's the team doing?
 
 ## Pre-record checklist
 
-- [ ] **`clients/` must contain only Brookside + `_template.md`** at the start (the 1 pre-seeded delivering client). If you rehearsed, delete every client file the rehearsal created (the CSV imports + `clients/bright-now-dental.md`) before the real take. Don't delete Brookside.
+- [ ] **`clients/` and `team/` must contain ONLY `_template.md`** at the start (everything else gets created by the imports on camera). If you rehearsed, delete every imported file + `clients/bright-now-dental.md` before the real take.
 - [ ] `clients.csv` is in the repo root and open/ready to show for a beat.
-- [ ] Run `/status` once on the seeded state so the cold-open shot ("1 delivering, $0 open, $1,000 MRR") is ready.
+- [ ] Run `/status` once on the empty state so the cold-open shot ($0 / empty pipeline) is ready.
 - [ ] **PRE-SCOUT the `/research` target, this is the #1 risk.** The hero moment only works if the business's public reviews actually complain about unanswered phones / hold times. Search it yourself first and confirm. **"Bright Now Dental in Austin" is pre-verified.** Have a SECOND verified business ready as backup. Never discover the result live for the first time.
 - [ ] Gmail + Google Calendar connected in Claude for the live `/kickoff` draft, otherwise narrate the file-write fallback. **Rehearse `/kickoff` once** so the drafted call time lands on a sensible weekday hour.
 - [ ] Say **"Claude Code, C-L-A-U-D-E"** on first mention with an on-screen label.

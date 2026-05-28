@@ -147,7 +147,7 @@ Invoices live in `finance/invoices.md`, a single markdown-table ledger. Each row
 - **One file is the source of truth per client.** When a command changes a deal, update that client's `meta` block (`stage`, `next_action`, and `deal_value`/`deal_mrr` if they firmed up) in the same pass. Never let the board drift from reality.
 - **Ground research in real sources.** `/research` uses real web search. Cite what you found. Never fabricate reviews, addresses, or numbers, if you can't find it, say "couldn't confirm."
 - **Price and cost from the files.** Pricing comes from `services.md`; team cost comes from each member's `rate` in `team/`. Never invent either.
-- **Demo-safe by default.** The CRM ships empty (a sample `clients.csv` is there to `/import`); a small sample team roster ships in `team/`; the demo email is `demo@example.com`. Real outreach (`/kickoff`) only fires against real contact details you add yourself.
+- **Demo-safe by default.** Both `clients/` and `team/` ship empty. Two CSV exports (`clients.csv`, `team.csv`) sit at the repo root to `/import`. Rich per-entity content lives in `data/onboarding/{clients,team}/<slug>.md` sidecars that `/import` auto-merges when present. The demo email is `demo@example.com`. Real outreach (`/kickoff`, `/remind`) only fires against real contact details you add yourself.
 - **Be terse.** No preamble, no narration. Do the thing, show the result.
 
 ---
@@ -156,4 +156,4 @@ Invoices live in `finance/invoices.md`, a single markdown-table ledger. Each row
 
 1. Open this folder in Claude Code. That's it for the core, `/intake`, `/research`, `/proposal`, `/status` work out of the box (research uses built-in web search).
 2. **Optional:** to let `/kickoff` draft real emails and calendar holds, connect the **Gmail** and **Google Calendar** integrations in Claude. See `.mcp.json` for notes. Without them, `/kickoff` writes the email + event details to the client file so you can send them by hand.
-3. Make it yours: edit `business.md` (identity, ICP, voice), `goals.md` (north star, quarterly targets, KPIs), and `services.md` (offerings + pricing). Then import or `/intake` your own clients (the CRM ships empty; `clients.csv` is just a sample to try `/import` on).
+3. Make it yours: edit `business.md` (identity, ICP, voice), `goals.md` (north star, quarterly targets, KPIs), and `services.md` (offerings + pricing). The CRM and team roster both ship empty, run `/import clients.csv` and `/import team.csv` to fill them, then keep going with `/intake`, `/research`, etc.

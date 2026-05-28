@@ -54,12 +54,15 @@ agency-os/
 ├── business.md          # WHO you are: identity, mission, ICP, positioning, brand voice
 ├── goals.md             # WHERE you're going: north star, quarterly targets, KPIs
 ├── services.md          # WHAT you sell: catalog + pricing (proposals price from here)
-├── clients/             # WHO you serve: one md per client = your CRM (ships empty)
+├── clients/             # WHO you serve: one md per client = your CRM (SHIPS EMPTY)
 │   └── _template.md
-├── clients.csv          # sample client list, try /import on it
-├── team/                # WHO does the work: one md per team member (rate, capacity)
-│   ├── _template.md
-│   └── maya-chen.md, devon-brooks.md, priya-nair.md   # sample roster
+├── clients.csv          # CRM-style export of clients to /import
+├── team/                # WHO does the work: one md per team member (SHIPS EMPTY)
+│   └── _template.md
+├── team.csv             # CRM-style export of team members to /import
+├── data/onboarding/     # rich sidecars merged on /import (Scope, Research, History, Wins)
+│   ├── clients/         #   one per slug, optional, used when the CSV row lands
+│   └── team/
 ├── finance/
 │   └── invoices.md      # WHO OWES you: the AR ledger
 ├── playbooks/           # HOW you deliver: canonical task list per service
@@ -71,12 +74,15 @@ agency-os/
 └── .claude/commands/    # the commands above
 ```
 
-The top three files (`business.md`, `goals.md`, `services.md`) are the **context layer**, Claude reads them every session so it knows who you are and what you're going for. Each client file has a fenced ` ```meta ` header (stage, deal value, MRR, next action, team assignments) that `/status` parses, plus freeform research and a timeline. Team members are staffed onto clients via a `team:` line in that header (`slug:hours-per-week`), which powers utilization and margin.
+The top three files (`business.md`, `goals.md`, `services.md`) are the **context layer**, Claude reads them every session so it knows who you are and what you're going for. `clients/` and `team/` ship empty, you populate them by importing the two CSV exports (`/import clients.csv`, `/import team.csv`). For clients or team members whose situation needs richer content than a CSV row can carry (a full `## Scope`, a `## History`, a `## Wins` section), drop a markdown file at `data/onboarding/{clients,team}/<slug>.md` and `/import` will merge it into the body automatically.
 
 ## Setup
 
 1. **Clone and open in Claude Code.** The core works immediately, `/intake`, `/research`, `/proposal`, `/status`, and `/import` need nothing but Claude Code (research uses built-in web search).
-2. **See it populated:** the CRM ships empty. Run `/import clients.csv` (or say "import my clients from clients.csv") to fill it with a sample pipeline, then try `/status`.
+2. **See it populated:** the CRM and the team roster both ship empty. Run two imports:
+   - `/import clients.csv` (or "onboard my clients from clients.csv") to fill the pipeline.
+   - `/import team.csv` (or "onboard my team") to fill the roster.
+   Then try `/status`, `/team`, `/progress brookside-animal-hospital`, `/performance`.
 3. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
 
 ## Make it yours

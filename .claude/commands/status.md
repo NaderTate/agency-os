@@ -26,7 +26,7 @@ The agency at a glance, computed live from the client files.
 
 ## Output format (illustrative: the shape after importing the sample `clients.csv`)
 
-The repo ships with one pre-seeded delivering client (Brookside Animal Hospital, $1,000/mo MRR). So a fresh `/status` shows just Brookside under DELIVERING. After `/import clients.csv` the board looks like this:
+The repo ships with an empty `clients/` folder. A fresh `/status` shows an empty pipeline ($0). After `/import clients.csv` (which includes Brookside in the seed CSV and merges its rich sidecar from `data/onboarding/clients/`), the board looks like this:
 
 ```
 AETHER AI / PIPELINE
@@ -71,4 +71,4 @@ DO NEXT
   3. Summit Dental Group: follow up on the proposal.
 ```
 
-(The MARGIN block above assumes you've staffed Citywide + Peak via `/assign` (Brookside is already staffed in the pre-seed). Before any `/assign`, team cost is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)
+(The MARGIN block above assumes you've staffed Citywide + Peak via `/assign`. Brookside's `maya-chen:2` assignment comes across in `clients.csv` at import, so it's already there post-import. Before any other `/assign`, team cost on the other clients is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)

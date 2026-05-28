@@ -1,21 +1,3 @@
-```meta
-name:             Brookside Animal Hospital
-slug:             brookside-animal-hospital
-stage:            delivering
-vertical:         Veterinary
-contact_name:     Dr. Lena Park
-contact_email:    demo@example.com
-source:           Referral
-service_interest: Voice agent (advanced)
-deal_value:       5000
-deal_mrr:         1000
-team:             maya-chen:2
-repo:             NaderTate/vet-voice-agent-memory
-recording:        recordings/brookside-kickoff-2026-03-12.md
-next_action:      Ship outbound vaccination reminders from staging to production.
-created:          2026-02-20
-```
-
 # Brookside Animal Hospital
 
 The agency's first signed client and the build that became the founding case study. Single-location small-animal vet, 4 vets + 6 techs. Owner Dr. Park is the buyer; her office manager Diane is the day-to-day point of contact.
@@ -65,4 +47,3 @@ The full feature set agreed at kickoff (see `recordings/brookside-kickoff-2026-0
 - 2026-04-22, Cancel + reschedule shipped.
 - 2026-05-15, Outbound reminder logic merged to staging.
 - 2026-05-25, Reminder cron deployed to staging; awaiting Dr. Park's UAT this week.
-```

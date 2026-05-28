@@ -1,8 +1,9 @@
-business,vertical,pipeline_stage,service,setup_fee,monthly,contact_name,email,source,recording
-Summit Dental Group,Dental,Proposal,AI receptionist,2500,500,Dr. Alan Pierce,demo@example.com,Referral,
-Harbor Family Law,Law,Meeting Booked,Voice agent,5000,1000,Rita Yuen,demo@example.com,Google,
-Glow Aesthetics,Med spa,New,AI receptionist,2500,500,,demo@example.com,Instagram,
-Peak Performance PT,Physical therapy,Closed Won,AI receptionist,2500,500,Marcus Hale,naderelmahdy45@gmail.com,Referral,
-Citywide HVAC,Home services,Onboarding,Voice agent,5000,1000,Tom Briggs,demo@example.com,YouTube,recordings/citywide-kickoff-2026-05-05.md
-Bella Vita Salon,Salon,New,Workflow automation,1500,0,,demo@example.com,Walk-in,
-Crestview Realty Partners,Real estate,Closed Lost,AI receptionist,0,0,Jenna Cole,demo@example.com,Cold email,
+business,vertical,pipeline_stage,service,setup_fee,monthly,contact_name,email,source,recording,team,repo
+Brookside Animal Hospital,Veterinary,Delivering,Voice agent,5000,1000,Dr. Lena Park,demo@example.com,Referral,recordings/brookside-kickoff-2026-03-12.md,maya-chen:2,NaderTate/vet-voice-agent-memory
+Summit Dental Group,Dental,Proposal,AI receptionist,2500,500,Dr. Alan Pierce,demo@example.com,Referral,,,
+Harbor Family Law,Law,Meeting Booked,Voice agent,5000,1000,Rita Yuen,demo@example.com,Google,,,
+Glow Aesthetics,Med spa,New,AI receptionist,2500,500,,demo@example.com,Instagram,,,
+Peak Performance PT,Physical therapy,Closed Won,AI receptionist,2500,500,Marcus Hale,naderelmahdy45@gmail.com,Referral,,,
+Citywide HVAC,Home services,Onboarding,Voice agent,5000,1000,Tom Briggs,demo@example.com,YouTube,recordings/citywide-kickoff-2026-05-05.md,,
+Bella Vita Salon,Salon,New,Workflow automation,1500,0,,demo@example.com,Walk-in,,,
+Crestview Realty Partners,Real estate,Closed Lost,AI receptionist,0,0,Jenna Cole,demo@example.com,Cold email,,,

@@ -1,13 +1,3 @@
-```meta
-name:      Maya Chen
-slug:      maya-chen
-role:      Voice / AI engineer
-status:    active
-rate:      65
-capacity:  30
-skills:    voice agents, Vapi, Twilio, Prisma, Node, eVetPractice, ServiceTitan
-```
-
 # Maya Chen
 
 ## Notes

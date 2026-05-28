@@ -1,13 +1,3 @@
-```meta
-name:      Devon Brooks
-slug:      devon-brooks
-role:      Automation engineer
-status:    active
-rate:      55
-capacity:  25
-skills:    workflow automation, n8n, integrations, scripting, CRM APIs, Twilio
-```
-
 # Devon Brooks
 
 ## Notes
