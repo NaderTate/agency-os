@@ -20,6 +20,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 function loadEnv(filePath) {
   if (!fs.existsSync(filePath)) return;
@@ -34,6 +35,10 @@ function loadEnv(filePath) {
   }
 }
 
+// Try .env next to the script's parent (project root = scripts/..), then CWD.
+// Whichever loads first wins (loadEnv won't overwrite existing process.env entries).
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+loadEnv(path.join(__dirname, '..', '.env'));
 loadEnv(path.join(process.cwd(), '.env'));
 
 const API_KEY = process.env.RESEND_API_KEY;

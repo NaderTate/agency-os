@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "//": "Project-level Claude Code settings, versioned and shipped with the repo. Pre-allows specific in-repo scripts so commands like /remind and /kickoff can actually send through Resend without a per-call permission prompt (which can't be approved through Telegram). The script itself is in scripts/send-email.mjs and requires RESEND_API_KEY in .env to send anything.",
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/send-email.mjs:*)",
+      "Bash(node scripts/send-email.mjs)"
+    ]
+  }
+}
