@@ -28,7 +28,9 @@ Turn a sent proposal into a booked conversation: a Google Calendar event with a 
 
 ## Output
 
-State: the event date/time, the Meet link URL, the email subject, and whether the email was drafted in Gmail or written to the file. Suggest `/status`.
+**Show the drafted email in the reply** (subject + body, verbatim) and the event details (date, time, Meet link URL) so the user can review everything without opening Gmail or Calendar. Then state where each artifact landed (Gmail Drafts + Calendar, or the client file fallback). Suggest `/status`.
+
+**Format hint:** lead with one short sentence on what you did, show the email block (labeled "Subject:" and "Body:"), then a one-line note with the Meet URL and event time. If this is a Telegram reply, follow the conversational-tone operating rule, plain prose around the email, but always include the email body itself verbatim so the user can read it on their phone.
 
 ## Notes
 

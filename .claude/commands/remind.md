@@ -30,7 +30,9 @@ Two forms:
 
 ## Output
 
-For each reminder created: invoice ID, client, amount, days late, tone used, and whether it landed in Gmail or in the client file. Suggest checking `/invoices` afterward.
+For each reminder created, **show the actual drafted email in the reply** (subject + body, verbatim) so the user can review it without leaving the chat. Then state: invoice ID, client, amount, days late, tone used, and whether it landed in Gmail Drafts (ready to send with one tap) or was written to the client file. Suggest `/invoices` if they want to see what's still outstanding.
+
+**Format hint:** in the reply, lead with one short sentence on what you did, then the email block (clearly labeled with "Subject:" and "Body:"), then a one-line note on where it sits. If this is a Telegram reply, follow the conversational-tone operating rule, plain prose around the email, but always include the email body itself verbatim so the user can read it on their phone.
 
 ## Notes
 

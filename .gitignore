@@ -6,5 +6,12 @@
 Thumbs.db
 *.log
 
-# If you add real client data, keep it out of the public repo:
-# clients/real-*.md
+# Generated state during normal use of AgencyOS.
+# The repo ships empty so anyone who clones it starts clean.
+# Templates and seed sidecars (data/onboarding/) ARE tracked.
+clients/*.md
+!clients/_template.md
+team/*.md
+!team/_template.md
+outputs/proposals/*.md
+!outputs/proposals/.gitkeep
