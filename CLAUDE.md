@@ -27,6 +27,8 @@ It runs both sides of the agency: **sales** (a CRM + pipeline in `clients/`, pri
 | `/prospect <vertical>` | Outbound lead-gen: real web search for businesses with pain signals; high-fit hits get auto-intaked. |
 | `/devlog [client] [window]` | This-week shipping activity (real GitHub commits) per delivering client via `gh`. |
 | `/clickup <client>` | Push the client's delivery tasks (from `playbooks/`, plus extra items derived from any linked `recording:` meeting transcript) into a new ClickUp list named after them. |
+| `/progress <client>` | Per-client delivery state: `## Scope` (delivered / in progress / pending), recent commits + ClickUp moves, next milestone. |
+| `/performance [member]` | Team KPI view: utilization, revenue attributed, projects shipped, recent wins. Per member or whole team. |
 
 That's the entire business. Find leads, research them, propose, book the call (Google Calendar + Meet), staff the team, push delivery to ClickUp, bill them, chase what's late, see what shipped this week, all in one place.
 
@@ -51,6 +53,8 @@ The slash commands are shortcuts, not the only way in. **Just talk in plain Engl
 - "find me dental practices in Austin with bad phone reviews" / "look for clients" → run `/prospect`.
 - "what shipped this week?" / "show me Maya's commits" / "any stalled builds?" → run `/devlog`.
 - "push Citywide's tasks to ClickUp" / "create the build tasks in ClickUp" → run `/clickup`.
+- "where are we with Brookside?" / "what's left on Citywide?" / "status on <client>" → run `/progress`.
+- "how's the team doing?" / "is Maya overloaded?" / "team KPIs" → run `/performance`.
 
 If a request is ambiguous (e.g. which client or member), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
 

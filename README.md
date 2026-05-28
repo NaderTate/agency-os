@@ -43,6 +43,8 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 | `/prospect <vertical>` | "find me dental practices in Austin" | Outbound lead-gen via real web search; high-fit hits auto-intake. |
 | `/devlog [client] [window]` | "what shipped this week?" | This-week shipping (real GitHub commits) per delivering client via `gh`. |
 | `/clickup <client>` | "push Citywide's tasks to ClickUp" | Create a ClickUp list for the client and populate it from the matching `playbooks/` file. |
+| `/progress <client>` | "where are we with Brookside?" | Per-client delivery state: scope progress, recent commits, ClickUp tasks, next milestone. |
+| `/performance [member]` | "how's the team doing?" | Team KPI view: utilization, revenue attributed, projects shipped, recent wins. |
 
 ## How it's structured
 

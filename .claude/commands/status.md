@@ -26,7 +26,7 @@ The agency at a glance, computed live from the client files.
 
 ## Output format (illustrative: the shape after importing the sample `clients.csv`)
 
-The repo ships with an empty `clients/` folder, so a fresh `/status` shows an empty pipeline ($0). After `/import clients.csv` the board looks like this:
+The repo ships with one pre-seeded delivering client (Brookside Animal Hospital, $1,000/mo MRR). So a fresh `/status` shows just Brookside under DELIVERING. After `/import clients.csv` the board looks like this:
 
 ```
 AETHER AI / PIPELINE
@@ -42,6 +42,7 @@ CALL-BOOKED
   Harbor Family Law (Law): $5,000 / $1,000 mo. Next: Run the discovery call.
 
 DELIVERING
+  Brookside Animal Hospital (Veterinary): $5,000 / $1,000 mo. Next: Ship outbound vaccination reminders from staging to production.
   Citywide HVAC (Home services): $5,000 / $1,000 mo. Next: Ship the current milestone.
 
 WON
@@ -52,13 +53,14 @@ LOST
 
 ──────────────────────────────
 Open pipeline value:  $11,500     (lead + researching + proposal-sent + call-booked)
-Signed MRR:           $1,500 /mo   (~$18,000/yr)   (won + delivering)
+Signed MRR:           $2,500 /mo   (~$30,000/yr)   (won + delivering)
 
 MARGIN (won + delivering)
-  Citywide HVAC:        $1,000 mo - $520 cost = $480 margin (48%)   [maya-chen 2h]
-  Peak Performance PT:  $500 mo - $280 cost = $220 margin (44%)     [priya-nair 2h]
+  Brookside Animal Hospital:  $1,000 mo - $520 cost = $480 margin (48%)   [maya-chen 2h]
+  Citywide HVAC:              $1,000 mo - $520 cost = $480 margin (48%)   [maya-chen 2h]
+  Peak Performance PT:        $500 mo - $280 cost = $220 margin (44%)     [priya-nair 2h]
   ──────
-  Net margin:           $1,500 mo - $800 cost = $700 /mo (47%)
+  Net margin:                 $2,500 mo - $1,320 cost = $1,180 /mo (47%)
 
 AR
   Outstanding: $1,500   Overdue: $500 (1 invoice)   → /invoices
@@ -69,4 +71,4 @@ DO NEXT
   3. Summit Dental Group: follow up on the proposal.
 ```
 
-(The MARGIN block above assumes you've staffed the two delivering/won clients via `/assign` (e.g. `maya-chen` 2 hrs/wk on Citywide, `priya-nair` 2 hrs/wk on Peak). Before any `/assign`, team cost is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)
+(The MARGIN block above assumes you've staffed Citywide + Peak via `/assign` (Brookside is already staffed in the pre-seed). Before any `/assign`, team cost is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)
