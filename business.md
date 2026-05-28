@@ -9,7 +9,7 @@
 - **Founded:** 2026
 - **Location:** Worldwide (remote)
 - **Website:** (add yours)
-- **Booking link:** (Calendly / etc.)
+- **Booking link:** (your scheduling URL, if you have one; otherwise `/kickoff` creates a Google Calendar event with a Meet link directly)
 
 ## Mission
 

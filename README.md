@@ -42,6 +42,7 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 | `/brief` | "what's going on today?" | Morning brief: pipeline movement, AR, top 3 actions, anchored to `goals.md`. |
 | `/prospect <vertical>` | "find me dental practices in Austin" | Outbound lead-gen via real web search; high-fit hits auto-intake. |
 | `/devlog [client] [window]` | "what shipped this week?" | This-week shipping (real GitHub commits) per delivering client via `gh`. |
+| `/clickup <client>` | "push Citywide's tasks to ClickUp" | Create a ClickUp list for the client and populate it from the matching `playbooks/` file. |
 
 ## How it's structured
 
@@ -59,6 +60,10 @@ agency-os/
 │   └── maya-chen.md, devon-brooks.md, priya-nair.md   # sample roster
 ├── finance/
 │   └── invoices.md      # WHO OWES you: the AR ledger
+├── playbooks/           # HOW you deliver: canonical task list per service
+│   ├── ai-receptionist.md
+│   ├── voice-agent-advanced.md
+│   └── workflow-automation.md
 ├── outputs/proposals/   # generated proposals land here
 └── .claude/commands/    # the commands above
 ```

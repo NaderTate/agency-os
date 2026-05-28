@@ -1,35 +1,37 @@
 ---
-description: Draft the outreach email and lock the discovery call (Calendly link if connected, otherwise Google Calendar hold + time options).
+description: Draft the outreach email and create a Google Calendar event (with Meet link) for the discovery call.
 ---
 
 # /kickoff
 
-Turn a sent proposal into a booked conversation: a ready-to-send email with the easiest possible way for them to pick a time.
+Turn a sent proposal into a booked conversation: a Google Calendar event with a Meet link, and a Gmail draft to the prospect.
 
 **Client slug:** $ARGUMENTS
 
 ## Procedure
 
-1. Read `clients/<slug>.md` and the matching `outputs/proposals/<slug>.md`. Read `business.md` for the agency voice + owner name.
-2. **Decide the booking mechanism** (in priority order, use the first available):
-   - **A. Calendly (preferred).** If a Calendly connector is available, create a **single-use scheduling link** for the user's "Discovery call" or default event type (use the Calendly `scheduling_links-create_single_use_scheduling_link` tool against the host's default event type, expiring in 14 days). The email then includes that one link, "pick any slot." Cleanest CTA, zero back-and-forth.
-   - **B. Google Calendar hold + time options.** If Calendly isn't connected but Google Calendar is, create a 20-minute "Discovery call, <Business>" event two business days out, and the email proposes two concrete time options.
-   - **C. File-write fallback.** Neither connected: write the full email + suggested times into the client file under a `## Kickoff (<date>)` section for the user to send by hand.
-3. **Draft the outreach email** (always, regardless of mechanism):
-   - Subject: short, specific, references their business + the outcome (not "Following up"). e.g. `<Business>, locking in the AI receptionist build`.
-   - Body: 4-6 sentences. Recap the problem in one line (from their research/angle), point to the proposal by name, propose a 20-minute discovery call, then either: (A) "Grab any slot here: <calendly-link>", (B) "Does <Day> at <time> or <Day> at <time> work?", or (C) suggested times for the user to send. Sign off as the agency owner from `business.md`. Agency voice: confident, no filler, no emoji, no em dashes.
-4. **Send vs draft (demo-safe):**
-   - If Gmail is connected, create the email as a **draft** (never auto-send). Use the client's real `contact_email` only if one is set; otherwise `demo@example.com` and note it's a demo.
-   - If Gmail isn't connected, write the email into the client file (path C above).
-5. Update the client `meta`: `stage: call-booked`, and set `next_action: Run the discovery call.`
-6. Add a timeline entry: "Kickoff drafted, booking via <Calendly link | Calendar hold | manual> (<date>)."
+1. Read `clients/<slug>.md` and the matching `outputs/proposals/<slug>.md`. Read `business.md` for agency voice + owner name (for the sign-off).
+2. **Create the calendar event (Google Calendar MCP):**
+   - Title: `Discovery call, <Business>`
+   - Duration: 20 minutes.
+   - Time: two business days from today at a sensible weekday hour (10:00am or 2:00pm in the owner's working hours; never weekends, never before 9am or after 5pm).
+   - Attendees: the agency owner (host, by default) and the client's `contact_email` if set; otherwise `demo@example.com` and note it's a demo.
+   - **Google Meet:** request a Meet link via `conferenceData.createRequest` so the event has a Meet link auto-generated. The email body and the event description will both reference it.
+   - Description: one-paragraph summary of the proposal (problem + what we'll build + investment), so the call has context for both sides.
+3. **Draft the outreach email (Gmail MCP, draft only, never auto-send):**
+   - Subject: short, specific. e.g. `<Business>, locking in the AI receptionist build`. Not "Following up".
+   - Body: 4-6 sentences. Recap the problem in one line (from the research/angle), point to the proposal by name, confirm the call ("I put a hold on the calendar for <Day> at <time>, here's the Meet link: <link>"), offer to move it if the time doesn't work, sign off as the agency owner. Agency voice: confident, no filler, no emoji, no em dashes.
+   - To: client's `contact_email` if set; otherwise `demo@example.com`.
+4. **Fallback if Gmail or Google Calendar isn't connected:** write the full email + event details (date, time, Meet link "to be generated", description) into the client file under a `## Kickoff (<date>)` section for the user to send/create by hand.
+5. Update the client `meta`: `stage: call-booked`, and set `next_action: Run the discovery call <date> at <time>.`
+6. Add a one-line timeline entry: "Kickoff drafted, discovery call <date> <time> (Meet link: <url>) (<date>)."
 
 ## Output
 
-State which mechanism was used, the email subject, and where the booking lives (Calendly URL, Calendar event, or file section). Suggest checking `/status`.
+State: the event date/time, the Meet link URL, the email subject, and whether the email was drafted in Gmail or written to the file. Suggest `/status`.
 
 ## Notes
 
-- **Calendly URLs vs URIs:** when you ask Calendly for a scheduling link, the response has a public `booking_url` (real URL on `calendly.com`) and internal `uri` fields (`api.calendly.com/...`). **Always use the `booking_url`** in the email, never the URI.
-- Default event type: if there are multiple Calendly event types, prefer one named "Discovery", "Discovery Call", or "Intro Call". Otherwise use the user's default. If you must guess, ask before creating the link rather than picking the wrong event.
-- The single-use link expires after one booking, so if the prospect doesn't book, /kickoff again will create a fresh link.
+- **Always use the Meet `hangoutLink`** that Google Calendar returns after the event is created, not a placeholder. The link is created when the event is created with the conference request.
+- **Times are in the owner's timezone** (from the Google Calendar default). State the timezone in the email if the prospect is in a different one.
+- The event is a real invite the prospect will get. For demo flows, the `demo@example.com` address is safe (no real human is bothered).
