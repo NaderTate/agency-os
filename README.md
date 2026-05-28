@@ -20,6 +20,8 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 
 **It runs delivery too, not just sales.** A team lives in `team/`; staff people onto active clients with `/assign`, and `/status` shows your **margin** (revenue minus team cost), plus `/team` shows who's loaded and who's free.
 
+**And it tracks the money.** Invoices live in `finance/invoices.md`; `/invoice` bills a client (or all active clients for a month), and `/invoices` shows what's outstanding, what's overdue, what's due soon, all derived from the ledger so "overdue" is never stale.
+
 ---
 
 ## The commands (or just talk to it)
@@ -34,6 +36,8 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 | `/import <csv>` | "import my clients" | One-time: lift an existing client list (CSV or a connected CRM) into the CRM. |
 | `/team` | "who's free?" | Show the roster, each person's utilization, and who's on which client. |
 | `/assign <member> <client> <hrs>` | "put Maya on Citywide" | Staff a team member onto a client (drives utilization + margin). |
+| `/invoices` | "who owes me?" | Show AR: outstanding, overdue (derived), due soon, drafts, recently paid. |
+| `/invoice <client> [for] [amount]` | "invoice Citywide for May" | Create an invoice (or bulk-bill all active clients for a month). |
 
 ## How it's structured
 
@@ -47,6 +51,8 @@ agency-os/
 ├── team/                # one markdown file per team member (rate, capacity)
 │   ├── _template.md
 │   └── maya-chen.md, devon-brooks.md, priya-nair.md   # sample roster
+├── finance/
+│   └── invoices.md      # the AR ledger (one table, one row per invoice)
 ├── outputs/proposals/   # generated proposals land here
 └── .claude/commands/    # the commands above
 ```

@@ -19,9 +19,10 @@ The agency at a glance, computed live from the client files.
    - **Client margin** = `deal_mrr` − monthly team cost.
    - **Agency net margin** = total Signed MRR − total monthly team cost across those clients.
    - If a client has no `team:` assignments, its cost is $0 (so margin = full MRR) until you `/assign` someone.
-4. **Render the board**, grouped by stage in pipeline order (`lead → researching → proposal-sent → call-booked → won → delivering`, then `lost` last if any). For each client show one line: `Business (vertical): $value setup / $mrr per mo. Next: <next_action>`.
-5. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`).
-6. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
+4. **Compute AR (accounts receivable)**, if `finance/invoices.md` exists. Read the ledger. Bucket as in `/invoices`: outstanding = `status: sent`; overdue subset = `status: sent` AND `due < today`. Sum each. Surface as a one-line AR summary on the dashboard. The full breakdown is what `/invoices` prints.
+5. **Render the board**, grouped by stage in pipeline order (`lead → researching → proposal-sent → call-booked → won → delivering`, then `lost` last if any). For each client show one line: `Business (vertical): $value setup / $mrr per mo. Next: <next_action>`.
+6. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`). If any invoices are overdue, the top action should be to chase them.
+7. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
 
 ## Output format (illustrative: the shape after importing the sample `clients.csv`)
 
@@ -59,10 +60,13 @@ MARGIN (won + delivering)
   ──────
   Net margin:           $1,500 mo - $800 cost = $700 /mo (47%)
 
+AR
+  Outstanding: $1,500   Overdue: $500 (1 invoice)   → /invoices
+
 DO NEXT
-  1. Harbor Family Law: run the discovery call.
-  2. Summit Dental Group: follow up on the proposal.
-  3. Glow Aesthetics: research + propose.
+  1. Chase INV-003 (Peak Performance PT, $500, 12 days late).
+  2. Harbor Family Law: run the discovery call.
+  3. Summit Dental Group: follow up on the proposal.
 ```
 
-(The MARGIN block above assumes you've staffed the two delivering/won clients via `/assign` (e.g. `maya-chen` 2 hrs/wk on Citywide, `priya-nair` 2 hrs/wk on Peak). Before any `/assign`, team cost is $0 and margin equals full MRR. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)
+(The MARGIN block above assumes you've staffed the two delivering/won clients via `/assign` (e.g. `maya-chen` 2 hrs/wk on Citywide, `priya-nair` 2 hrs/wk on Peak). Before any `/assign`, team cost is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)

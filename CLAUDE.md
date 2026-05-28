@@ -26,8 +26,10 @@ It runs both sides of the agency: **sales** (a CRM + pipeline in `clients/`, pri
 | `/import <csv>` | One-time: lift an existing client list (CSV export or a connected CRM) into the markdown CRM. |
 | `/team` | Show the team roster, each person's utilization, and who's on which client. |
 | `/assign <member> <client> <hrs/wk>` | Staff a team member onto a client (this drives utilization + margin). |
+| `/invoices` | Show accounts receivable: outstanding, overdue (derived), due soon, drafts, recently paid. |
+| `/invoice <client> [for] [amount]` | Create an invoice for a client (or "bill all active clients for May" for bulk). |
 
-That's the entire business. Add a client, research them, send a proposal, book the call, staff the team, track margin, without leaving the terminal.
+That's the entire business. Add a client, research them, send a proposal, book the call, staff the team, bill them, chase what's late, all without leaving the terminal.
 
 ## You don't have to remember the commands
 
@@ -42,6 +44,9 @@ The slash commands are shortcuts, not the only way in. **Just talk in plain Engl
 - "who's on my team?" / "who's free?" / "how loaded is everyone?" → run `/team`.
 - "put Maya on Citywide for 2 hours a week" / "staff Devon on that build" → run `/assign`.
 - "add a voice engineer named Maya at $65 an hour, 30 hours a week" → create `team/maya-chen.md` from `team/_template.md` (a hire; no dedicated command, just do it).
+- "who owes me money?" / "what's unpaid?" / "any overdue invoices?" → run `/invoices`.
+- "invoice Citywide for May" / "bill all active clients for June" → run `/invoice`.
+- "mark INV-003 paid" / "Peak paid the May invoice" → update that row's `status` to `paid` and `paid_on` to today.
 
 If a request is ambiguous (e.g. which client or member), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
 
@@ -111,6 +116,16 @@ team: maya-chen:2, priya-nair:1
 - **Net margin (agency)** = total Signed MRR − total monthly team cost.
 
 A client with no `team:` line has $0 cost (margin = full MRR) until you `/assign` someone.
+
+---
+
+## Finance (accounts receivable)
+
+Invoices live in `finance/invoices.md`, a single markdown-table ledger. Each row has `id, client, amount, for, issued, due, status, paid_on`.
+
+**Status set:** `draft`, `sent`, `paid`. **Never store `overdue`** as a status, it's derived live (status `sent` AND `due` is before today). Same discipline as pipeline totals and margin: source-of-truth fields are flat, expensive labels are computed when asked.
+
+`/invoice` appends rows (single or bulk-bill all active clients for a month). `/invoices` shows AR (outstanding, overdue, due soon, drafts, recently paid). `/status` surfaces a one-line AR summary so the owner sees what's late without leaving the dashboard.
 
 ---
 
