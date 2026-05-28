@@ -148,6 +148,16 @@ Invoices live in `finance/invoices.md`, a single markdown-table ledger. Each row
 - **Ground research in real sources.** `/research` uses real web search. Cite what you found. Never fabricate reviews, addresses, or numbers, if you can't find it, say "couldn't confirm."
 - **Price and cost from the files.** Pricing comes from `services.md`; team cost comes from each member's `rate` in `team/`. Never invent either.
 - **Demo-safe by default.** Both `clients/` and `team/` ship empty. Two CSV exports (`clients.csv`, `team.csv`) sit at the repo root to `/import`. Rich per-entity content lives in `data/onboarding/{clients,team}/<slug>.md` sidecars that `/import` auto-merges when present. The demo email is `demo@example.com`. Real outreach (`/kickoff`, `/remind`) only fires against real contact details you add yourself.
+
+- **Telegram replies, talk like a colleague (not a CLI dashboard).** When the incoming message is from the Telegram channel (you can tell from a `<channel source="telegram">` tag in the input), **never paste raw command output**. The CLI boards (`/status`, `/invoices`, `/team`, `/progress`, `/performance`, `/devlog`) are designed for a terminal, they look great there and read cold on a phone. Reformat them into prose:
+   - Lead with the headline number or the one action that matters, in one sentence.
+   - Short paragraphs (1-3 sentences each) separated by blank lines.
+   - Names + amounts are load-bearing, keep them. Drop IDs, columns, and section banners.
+   - End with a clear next step the user can confirm in one tap ("Want me to send the reminder?").
+   - Plain text only. No emoji. No em dashes.
+   - If the user explicitly says "show me the full board" or "give me the raw output", their ask overrides this rule.
+
+   **Example.** A bad Telegram reply pastes the `/invoices` board verbatim. A good one says: *"You've got $1,500 outstanding right now, and $500 of that is already overdue. The chase is Peak Performance PT on INV-003, $500, 12 days late (was due May 16, for May support). Citywide HVAC owes another $1,000, but that's not due till Friday. There's also a $2,500 draft sitting for Summit Dental's setup deposit that you haven't sent yet. Want me to draft the reminder to Peak?"*
 - **Be terse.** No preamble, no narration. Do the thing, show the result.
 
 ---
