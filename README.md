@@ -84,6 +84,7 @@ The top three files (`business.md`, `goals.md`, `services.md`) are the **context
    - `/import team.csv` (or "onboard my team") to fill the roster.
    Then try `/status`, `/team`, `/progress brookside-animal-hospital`, `/performance`.
 3. **Optional, for `/kickoff`:** connect the **Gmail** and **Google Calendar** integrations in Claude so it can draft real emails and calendar holds. Without them, `/kickoff` writes the email + event details into the client file to send by hand.
+4. **Optional, for one-tap-send (`/remind`, `/kickoff` actually sending instead of just drafting):** copy `.env.example` to `.env`, drop in a [Resend](https://resend.com) API key as `RESEND_API_KEY`, and optionally `RESEND_FROM="Your Agency <addr@verified-domain>"`. After that, any drafted email shown in the chat can be sent with a simple "send it" reply, via `scripts/send-email.mjs`. Without a verified domain, Resend lets you send only from `onboarding@resend.dev` (good for testing).
 
 ## Make it yours
 

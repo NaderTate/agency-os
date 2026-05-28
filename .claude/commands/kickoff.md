@@ -25,6 +25,13 @@ Turn a sent proposal into a booked conversation: a Google Calendar event with a 
 4. **Fallback if Gmail or Google Calendar isn't connected:** write the full email + event details (date, time, Meet link "to be generated", description) into the client file under a `## Kickoff (<date>)` section for the user to send/create by hand.
 5. Update the client `meta`: `stage: call-booked`, and set `next_action: Run the discovery call <date> at <time>.`
 6. Add a one-line timeline entry: "Kickoff drafted, discovery call <date> <time> (Meet link: <url>) (<date>)."
+7. **Then wait for confirmation before sending.** End the reply with: "Want me to send it, or tweak it first?" If the user confirms ("send", "yes go", etc.) AND `RESEND_API_KEY` is set in `.env`, send the email via Resend:
+
+   ```
+   node scripts/send-email.mjs --to <contact_email> --subject <subject> --body-file <tmp_body_file>
+   ```
+
+   Write the body to a temp file first (e.g. `data/tmp/kickoff-<slug>.txt`), invoke the script, delete the temp file. On success, add a second timeline entry: "Kickoff SENT to <email>, discovery call <date> <time> (Resend id <id>)." On failure, surface the error and leave the Gmail draft in place.
 
 ## Output
 

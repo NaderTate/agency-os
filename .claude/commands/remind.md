@@ -23,10 +23,18 @@ Two forms:
    - **22+ days late:** direct. Note this is the Nth reminder, ask for resolution this week, mention pausing future support if unresolved (only if appropriate to the relationship, otherwise just ask for an ETA).
    - Subject is specific: `Invoice INV-NNN, <for>, $<amount> (due <date>)`, never "Following up".
    - Agency voice from `business.md`: no filler, no emoji, no em dashes.
-5. **Send vs draft (demo-safe):**
-   - If Gmail is connected, create the email as a **draft** (never auto-send). Use the client's real `contact_email` if one is set; otherwise `demo@example.com` and note it's a demo.
+5. **Always draft + show, never auto-send:**
+   - If Gmail is connected, create the email as a **draft** there (so it's archived in Gmail's Drafts). Use the client's real `contact_email` if one is set; otherwise `demo@example.com` and note it's a demo.
    - If Gmail isn't connected, write the full email under a `## Reminder (<date>)` section on the invoice's matching client file.
+   - Either way, **show the full subject + body in the chat reply** (per the "show drafted communications in the reply" operating rule). Never just say "drafted, go check Gmail."
 6. Add a one-line entry to the client's timeline: "Reminder drafted for INV-NNN (<date>, <days_late> days late)."
+7. **Then wait for confirmation before actually sending.** End the reply with: "Want me to send it, or tweak it first?" If the user confirms ("send", "yes, send it", "go ahead", etc.) AND `RESEND_API_KEY` is set in `.env`, send the email via Resend:
+
+   ```
+   node scripts/send-email.mjs --to <contact_email> --subject <subject> --body-file <tmp_body_file>
+   ```
+
+   Write the body to a temp file (e.g. `data/tmp/remind-INV-NNN.txt`) first, then invoke the script, then delete the temp file. On success, add a second timeline entry: "Reminder SENT to <email> for INV-NNN (<date>, Resend id <id>)." On failure, surface the error and leave the Gmail draft in place. If `RESEND_API_KEY` isn't set, explain the user has to wire it up (see `.env.example`) and the manual "tap send in Gmail" path is the fallback.
 
 ## Output
 
