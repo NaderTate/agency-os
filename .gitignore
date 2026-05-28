@@ -11,6 +11,11 @@
 Thumbs.db
 *.log
 
+# Temp files written by commands (email bodies for send-email.mjs, etc.)
+data/tmp/
+**/.tmp-*
+**/*.tmp.*
+
 # Generated state during normal use of AgencyOS.
 # The repo ships empty so anyone who clones it starts clean.
 # Templates and seed sidecars (data/onboarding/) ARE tracked.

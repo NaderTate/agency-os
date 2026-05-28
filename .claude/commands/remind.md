@@ -28,13 +28,15 @@ Two forms:
    - If Gmail isn't connected, write the full email under a `## Reminder (<date>)` section on the invoice's matching client file.
    - Either way, **show the full subject + body in the chat reply** (per the "show drafted communications in the reply" operating rule). Never just say "drafted, go check Gmail."
 6. Add a one-line entry to the client's timeline: "Reminder drafted for INV-NNN (<date>, <days_late> days late)."
-7. **Then wait for confirmation before actually sending.** End the reply with: "Want me to send it, or tweak it first?" If the user confirms ("send", "yes, send it", "go ahead", etc.) AND `RESEND_API_KEY` is set in `.env`, send the email via Resend:
+7. **Then wait for confirmation before actually sending.** End the reply with: "Want me to send it, or tweak it first?" If the user confirms ("send", "yes, send it", "go ahead", etc.) AND `RESEND_API_KEY` is set in `.env`, send the email via Resend. **Pipe the body as stdin via a heredoc, no temp files:**
 
-   ```
-   node scripts/send-email.mjs --to <contact_email> --subject <subject> --body-file <tmp_body_file>
+   ```bash
+   node scripts/send-email.mjs --to "<contact_email>" --subject "<subject>" <<'EMAIL_BODY_END'
+   <the full email body verbatim, multiple lines fine>
+   EMAIL_BODY_END
    ```
 
-   Write the body to a temp file (e.g. `data/tmp/remind-INV-NNN.txt`) first, then invoke the script, then delete the temp file. On success, add a second timeline entry: "Reminder SENT to <email> for INV-NNN (<date>, Resend id <id>)." On failure, surface the error and leave the Gmail draft in place. If `RESEND_API_KEY` isn't set, explain the user has to wire it up (see `.env.example`) and the manual "tap send in Gmail" path is the fallback.
+   The `<<'EMAIL_BODY_END'` (single-quoted heredoc tag) prevents shell expansion so quotes, backticks, and dollar signs in the body pass through literally. On success, add a second timeline entry: "Reminder SENT to <email> for INV-NNN (<date>, Resend id <id>)." On failure, surface the error and leave the Gmail draft in place. If `RESEND_API_KEY` isn't set, explain the user has to wire it up (see `.env.example`) and the manual "tap send in Gmail" path is the fallback.
 
 ## Output
 
