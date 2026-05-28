@@ -22,8 +22,12 @@ It runs both sides of the agency: **sales** (a CRM + pipeline in `clients/`, pri
 | `/assign <member> <client> <hrs/wk>` | Staff a team member onto a client (this drives utilization + margin). |
 | `/invoices` | Show accounts receivable: outstanding, overdue (derived), due soon, drafts, recently paid. |
 | `/invoice <client> [for] [amount]` | Create an invoice for a client (or "bill all active clients for May" for bulk). |
+| `/remind <INV-id>` | Draft a payment-reminder email (tone scales with how late it is). "Remind all overdue" for bulk. |
+| `/brief` | Morning brief: pipeline movement, AR, what to chase today, anchored to `goals.md`. One screen. |
+| `/prospect <vertical>` | Outbound lead-gen: real web search for businesses with pain signals; high-fit hits get auto-intaked. |
+| `/devlog [client] [window]` | This-week shipping activity (real GitHub commits) per delivering client via `gh`. |
 
-That's the entire business. Add a client, research them, send a proposal, book the call, staff the team, bill them, chase what's late, all without leaving the terminal.
+That's the entire business. Find leads, research them, propose, book the call (Calendly), staff the team, bill them, chase what's late, see what shipped this week, all in one place.
 
 ## You don't have to remember the commands
 
@@ -41,6 +45,10 @@ The slash commands are shortcuts, not the only way in. **Just talk in plain Engl
 - "who owes me money?" / "what's unpaid?" / "any overdue invoices?" → run `/invoices`.
 - "invoice Citywide for May" / "bill all active clients for June" → run `/invoice`.
 - "mark INV-003 paid" / "Peak paid the May invoice" → update that row's `status` to `paid` and `paid_on` to today.
+- "remind Peak about INV-003" / "chase the overdue ones" → run `/remind`.
+- "give me the morning brief" / "what's going on today?" / "wrap up the day" → run `/brief`.
+- "find me dental practices in Austin with bad phone reviews" / "look for clients" → run `/prospect`.
+- "what shipped this week?" / "show me Maya's commits" / "any stalled builds?" → run `/devlog`.
 
 If a request is ambiguous (e.g. which client or member), ask one short question. If it clearly maps to a verb, just do it, don't make the user phrase it as a command.
 

@@ -38,6 +38,10 @@ Add a lead, research the business, send a scoped + priced proposal, book the cal
 | `/assign <member> <client> <hrs>` | "put Maya on Citywide" | Staff a team member onto a client (drives utilization + margin). |
 | `/invoices` | "who owes me?" | Show AR: outstanding, overdue (derived), due soon, drafts, recently paid. |
 | `/invoice <client> [for] [amount]` | "invoice Citywide for May" | Create an invoice (or bulk-bill all active clients for a month). |
+| `/remind <INV-id>` | "chase the overdue ones" | Draft a payment-reminder email; tone scales with how late it is. |
+| `/brief` | "what's going on today?" | Morning brief: pipeline movement, AR, top 3 actions, anchored to `goals.md`. |
+| `/prospect <vertical>` | "find me dental practices in Austin" | Outbound lead-gen via real web search; high-fit hits auto-intake. |
+| `/devlog [client] [window]` | "what shipped this week?" | This-week shipping (real GitHub commits) per delivering client via `gh`. |
 
 ## How it's structured
 

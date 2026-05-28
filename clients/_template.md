@@ -10,6 +10,7 @@ service_interest: AI receptionist
 deal_value:       2500
 deal_mrr:         500
 team:                           # once won/delivering, staff it: maya-chen:2, priya-nair:1
+repo:                           # once delivering: owner/name, /devlog will pull commits from it
 next_action:      Research the business, then send a proposal.
 created:          2026-05-27
 ```
