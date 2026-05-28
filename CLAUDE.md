@@ -26,7 +26,7 @@ It runs both sides of the agency: **sales** (a CRM + pipeline in `clients/`, pri
 | `/brief` | Morning brief: pipeline movement, AR, what to chase today, anchored to `goals.md`. One screen. |
 | `/prospect <vertical>` | Outbound lead-gen: real web search for businesses with pain signals; high-fit hits get auto-intaked. |
 | `/devlog [client] [window]` | This-week shipping activity (real GitHub commits) per delivering client via `gh`. |
-| `/clickup <client>` | Push the client's delivery tasks (from `playbooks/`) into a new ClickUp list named after them. |
+| `/clickup <client>` | Push the client's delivery tasks (from `playbooks/`, plus extra items derived from any linked `recording:` meeting transcript) into a new ClickUp list named after them. |
 
 That's the entire business. Find leads, research them, propose, book the call (Google Calendar + Meet), staff the team, push delivery to ClickUp, bill them, chase what's late, see what shipped this week, all in one place.
 

@@ -64,6 +64,7 @@ agency-os/
 │   ├── ai-receptionist.md
 │   ├── voice-agent-advanced.md
 │   └── workflow-automation.md
+├── recordings/          # WHAT YOU AGREED: meeting transcripts (kickoffs, scope calls), linked from a client's recording: field; /clickup derives extra tasks from them
 ├── outputs/proposals/   # generated proposals land here
 └── .claude/commands/    # the commands above
 ```

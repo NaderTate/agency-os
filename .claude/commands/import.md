@@ -26,6 +26,7 @@ For agencies that aren't starting from scratch: lift an existing client list int
    - **Service** → match to a `services.md` offering (default "AI receptionist" if absent).
    - **Deal value / MRR** → use the CSV's setup + monthly columns if present; otherwise infer from the matched service. Use `0` where unknown.
    - **Contact name / email / source** → carry over; leave `(unknown yet)` if blank.
+   - **`recording` column (optional)** → if the CSV has a `recording` column with a non-empty path, set the client's `meta` `recording:` field to it. This is how `/clickup` later picks up a meeting transcript to derive extra tasks from.
    - `next_action` → a sensible default for the mapped stage (e.g. a `lead` → "Research the business, then send a proposal.").
 4. Create `clients/<slug>.md` per row using the structure of `clients/_template.md`. In each body, add a one-line note: "Imported from <source file> on <date>."
 5. **Never overwrite.** If a client file with that slug already exists, skip it and report it as a duplicate.
