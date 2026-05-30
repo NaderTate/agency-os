@@ -10,7 +10,7 @@ Turn a sent proposal into a booked conversation: a Google Calendar event with a 
 
 ## Procedure
 
-1. Read `clients/<slug>.md` and the matching `outputs/proposals/<slug>.md`. Read `business.md` for agency voice + owner name (for the sign-off).
+1. Read `data/clients/<slug>.md` and the matching `outputs/proposals/<slug>.md`. Read `context/business.md` for agency voice + owner name (for the sign-off).
 2. **Create the calendar event (Google Calendar MCP):**
    - Title: `Discovery call, <Business>`
    - Duration: 20 minutes.

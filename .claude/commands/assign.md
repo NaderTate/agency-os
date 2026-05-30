@@ -11,7 +11,7 @@ Staff a team member onto a client's delivery. This is what powers utilization an
 ## Procedure
 
 1. Parse the member slug, client slug, and hours/week from the arguments. If hours is missing, ask for it.
-2. Confirm `team/<member-slug>.md` and `clients/<client-slug>.md` both exist. If either is missing, stop and say which.
+2. Confirm `data/team/<member-slug>.md` and `data/clients/<client-slug>.md` both exist. If either is missing, stop and say which.
 3. Update the client's `meta` block `team:` field:
    - If there's no `team:` line, add one: `team: <member-slug>:<hours>`.
    - If the member is already listed, update their hours.

@@ -10,7 +10,7 @@ What shipped this week. Pulls real commits from each delivering client's repo vi
 
 ## Procedure
 
-1. Glob `clients/*.md` (skip `_template.md`) and read each `meta` block. Pick those whose `stage` is `delivering` AND whose meta has a `repo:` field (format: `owner/name`). Skip the rest, they have no code to log.
+1. Glob `data/clients/*.md` (skip `_template.md`) and read each `meta` block. Pick those whose `stage` is `delivering` AND whose meta has a `repo:` field (format: `owner/name`). Skip the rest, they have no code to log.
 2. If the user passed a specific client slug, restrict to that client.
 3. Resolve the time window:
    - "today" → since 00:00 today.

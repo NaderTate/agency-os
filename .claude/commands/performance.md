@@ -10,9 +10,9 @@ How is the team actually performing? Derives KPIs from the live data + each memb
 
 ## Procedure
 
-1. Glob `team/*.md` (skip `_template.md`). If a member slug was passed, restrict to that one.
+1. Glob `data/team/*.md` (skip `_template.md`). If a member slug was passed, restrict to that one.
 2. For each member, parse the `meta` block (`rate`, `capacity`, `status`), the `## History` section (count past + current projects), and the `## Wins` section (latest 1-2 achievements).
-3. **Compute live KPIs** by reading `clients/*.md`:
+3. **Compute live KPIs** by reading `data/clients/*.md`:
    - **Assignments today:** find every client whose `meta` `team:` field contains the member's slug; pull `hours_per_week`.
    - **Utilization** = Σ assigned hrs ÷ `capacity`. Flag over 100% (overallocated) and 0% (bench).
    - **Revenue attributed (MRR)** = Σ `deal_mrr` of the clients they're on (full MRR, not shared, treat them as the responsible engineer).

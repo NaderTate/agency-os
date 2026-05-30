@@ -10,7 +10,7 @@ The per-client drill-down. Answers "where are we with X?" without scrolling six 
 
 ## Procedure
 
-1. Read `clients/<slug>.md`. If it doesn't exist, stop and say so.
+1. Read `data/clients/<slug>.md`. If it doesn't exist, stop and say so.
 2. Pull from the `meta` block: `stage`, `deal_value`, `deal_mrr`, `team:` (assignments), `repo:`, `recording:`, `clickup_list:`.
 3. **Parse the `## Scope` section** if it exists. Expected layout:
    - `### Delivered`, `### In progress`, `### Pending` subsections, each with `- [x]` or `- [ ]` items.
@@ -35,7 +35,7 @@ BROOKSIDE ANIMAL HOSPITAL / PROGRESS
 Stage:    delivering   |  $5,000 setup + $1,000/mo   |  margin $480/mo (48%)
 Team:     Maya Chen, 2 hrs/wk
 Repo:     NaderTate/vet-voice-agent-memory
-Recording: recordings/brookside-kickoff-2026-03-12.md
+Recording: data/recordings/brookside-kickoff-2026-03-12.md
 
 SCOPE (9 items: 4 delivered, 2 in progress, 3 pending)
 

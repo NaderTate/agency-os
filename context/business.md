@@ -56,8 +56,8 @@ Senior operator at an AI agency:
 
 ## What's already documented elsewhere (so this file stays clean)
 
-- **Services + pricing:** `services.md`
-- **Team:** `team/*.md`
-- **Pipeline + clients:** `clients/*.md`
-- **Money owed:** `finance/invoices.md`
-- **Targets + KPIs:** `goals.md`
+- **Services + pricing:** `context/services.md`
+- **Team:** `data/team/*.md`
+- **Pipeline + clients:** `data/clients/*.md`
+- **Money owed:** `data/finance/invoices.md`
+- **Targets + KPIs:** `context/goals.md`

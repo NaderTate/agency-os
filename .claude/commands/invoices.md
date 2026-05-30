@@ -4,11 +4,11 @@ description: Show accounts receivable: what's outstanding, what's overdue, what'
 
 # /invoices
 
-Who owes you money, what's late, and what's coming due. All computed from `finance/invoices.md`.
+Who owes you money, what's late, and what's coming due. All computed from `data/finance/invoices.md`.
 
 ## Procedure
 
-1. Read `finance/invoices.md` and parse every row of the ledger table (`id, client, amount, for, issued, due, status, paid_on`). If the ledger doesn't exist yet, say so and suggest creating the first invoice with `/invoice <client>`.
+1. Read `data/finance/invoices.md` and parse every row of the ledger table (`id, client, amount, for, issued, due, status, paid_on`). If the ledger doesn't exist yet, say so and suggest creating the first invoice with `/invoice <client>`.
 2. Use **today's date** for all derivations. Never trust a stored "overdue" status, the source of truth is `status` + `due`.
 3. **Bucket the rows:**
    - **Overdue** = `status: sent` AND `due` is before today. Compute `days_late = today - due`.

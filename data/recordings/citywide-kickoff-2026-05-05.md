@@ -56,4 +56,4 @@ A working transcript of the kickoff call. Not verbatim, condensed to the parts t
 4. **Friendly Texas voice tuning** - drop formal opener, three sample voices to pick from before go-live.
 5. **Spanish-language routing** - language detection at greeting, route to a Spanish-tuned version of the same agent.
 
-These are in addition to the standard tasks in `playbooks/voice-agent-advanced.md`.
+These are in addition to the standard tasks in `context/playbooks/voice-agent-advanced.md`.

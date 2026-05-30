@@ -8,25 +8,25 @@ The agency at a glance, computed live from the client files.
 
 ## Procedure
 
-1. Glob `clients/*.md` and read each one **except `_template.md`**. Parse the fenced `meta` block at the top of each (name, stage, vertical, deal_value, deal_mrr, next_action, and `team:` if present).
+1. Glob `data/clients/*.md` and read each one **except `_template.md`**. Parse the fenced `meta` block at the top of each (name, stage, vertical, deal_value, deal_mrr, next_action, and `team:` if present).
 2. **Compute the pipeline numbers** (state them, don't hand-wave):
    - **Open pipeline value** = sum of `deal_value` for every client whose stage is `lead`, `researching`, `proposal-sent`, or `call-booked`.
    - **Signed MRR** = sum of `deal_mrr` for every client whose stage is `won` or `delivering`.
    - **Annualized signed** = Signed MRR × 12 (one-line aside).
    - Exclude any client with stage `lost` from both totals.
-3. **Compute margin** (only for `won` + `delivering` clients, the ones generating revenue). For each, read the `team:` field (`slug:hours_per_week` entries), look up each member's `rate` in `team/<slug>.md`, and:
+3. **Compute margin** (only for `won` + `delivering` clients, the ones generating revenue). For each, read the `team:` field (`slug:hours_per_week` entries), look up each member's `rate` in `data/team/<slug>.md`, and:
    - **Monthly team cost** = Σ (`rate` × `hours_per_week` × 4). (4 weeks/month, a deliberate simplification for clean math.)
    - **Client margin** = `deal_mrr` − monthly team cost.
    - **Agency net margin** = total Signed MRR − total monthly team cost across those clients.
    - If a client has no `team:` assignments, its cost is $0 (so margin = full MRR) until you `/assign` someone.
-4. **Compute AR (accounts receivable)**, if `finance/invoices.md` exists. Read the ledger. Bucket as in `/invoices`: outstanding = `status: sent`; overdue subset = `status: sent` AND `due < today`. Sum each. Surface as a one-line AR summary on the dashboard. The full breakdown is what `/invoices` prints.
+4. **Compute AR (accounts receivable)**, if `data/finance/invoices.md` exists. Read the ledger. Bucket as in `/invoices`: outstanding = `status: sent`; overdue subset = `status: sent` AND `due < today`. Sum each. Surface as a one-line AR summary on the dashboard. The full breakdown is what `/invoices` prints.
 5. **Render the board**, grouped by stage in pipeline order (`lead → researching → proposal-sent → call-booked → won → delivering`, then `lost` last if any). For each client show one line: `Business (vertical): $value setup / $mrr per mo. Next: <next_action>`.
 6. **Surface the focus:** below the board, list the 1-3 most urgent next actions (deals furthest along the funnel first, a `call-booked` follow-up outranks a fresh `lead`). If any invoices are overdue, the top action should be to chase them.
 7. Keep it to one screen. This is the cold-open shot and the closing shot of the walkthrough, so it must be clean and instantly legible.
 
-## Output format (illustrative: the shape after importing the sample `clients.csv`)
+## Output format (illustrative: the shape after importing the sample `data/clients.csv`)
 
-The repo ships with an empty `clients/` folder. A fresh `/status` shows an empty pipeline ($0). After `/import clients.csv` (which includes Brookside in the seed CSV and merges its rich sidecar from `data/onboarding/clients/`), the board looks like this:
+The repo ships with an empty `data/clients/` folder. A fresh `/status` shows an empty pipeline ($0). After `/import data/clients.csv` (which includes Brookside in the seed CSV and merges its rich sidecar from `data/onboarding/clients/`), the board looks like this:
 
 ```
 AETHER AI / PIPELINE
@@ -71,4 +71,4 @@ DO NEXT
   3. Summit Dental Group: follow up on the proposal.
 ```
 
-(The MARGIN block above assumes you've staffed Citywide + Peak via `/assign`. Brookside's `maya-chen:2` assignment comes across in `clients.csv` at import, so it's already there post-import. Before any other `/assign`, team cost on the other clients is $0 and margin equals full MRR. The AR line is from `finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)
+(The MARGIN block above assumes you've staffed Citywide + Peak via `/assign`. Brookside's `maya-chen:2` assignment comes across in `data/clients.csv` at import, so it's already there post-import. Before any other `/assign`, team cost on the other clients is $0 and margin equals full MRR. The AR line is from `data/finance/invoices.md`; if the ledger doesn't exist yet, omit that section. After you `/intake` a new lead, its `deal_value` joins the open pipeline total, so the number moves the moment a lead enters the system.)

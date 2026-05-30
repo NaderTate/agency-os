@@ -4,7 +4,7 @@ description: Create a new invoice for a client (or bulk-bill all active clients 
 
 # /invoice
 
-Append a row to `finance/invoices.md` for billing.
+Append a row to `data/finance/invoices.md` for billing.
 
 **Arguments:** $ARGUMENTS
 
@@ -16,8 +16,8 @@ Two forms:
 
 ## Procedure
 
-1. Read `finance/invoices.md`. Determine the next ID: `INV-NNN` where NNN is one greater than the highest existing.
-2. For the single form: read `clients/<slug>.md` to confirm the client and pull `deal_value` / `deal_mrr`. If the client file doesn't exist, stop and say so.
+1. Read `data/finance/invoices.md`. Determine the next ID: `INV-NNN` where NNN is one greater than the highest existing.
+2. For the single form: read `data/clients/<slug>.md` to confirm the client and pull `deal_value` / `deal_mrr`. If the client file doesn't exist, stop and say so.
 3. For each invoice being created:
    - `id` = next ID (incrementing for bulk).
    - `client` = the client's display name from their `meta`.

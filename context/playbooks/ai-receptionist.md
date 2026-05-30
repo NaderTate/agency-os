@@ -1,6 +1,6 @@
 # Playbook: AI Receptionist
 
-The standard build for the **AI Receptionist** offer in `services.md` ($2,500 setup + $500/mo). One markdown file = one canonical task list. Used by:
+The standard build for the **AI Receptionist** offer in `context/services.md` ($2,500 setup + $500/mo). One markdown file = one canonical task list. Used by:
 
 - `/clickup <client>` to push these tasks as a list into the ClickUp workspace.
 - `/onboarding <client>` (when it ships) for the internal welcome packet.

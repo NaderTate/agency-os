@@ -14,15 +14,15 @@ Two forms:
 
 ## Procedure
 
-1. Read `finance/invoices.md`. Locate the target invoice(s). For each, compute `days_late` = today minus `due`. Skip anything that's `paid` or `draft`.
-2. For each invoice, read the matching `clients/<slug>.md` to get the contact name + email. If `contact_email` is `(unknown yet)` or `demo@example.com`, draft against `demo@example.com` and note it.
-3. Read `business.md` to pull the agency voice + owner name for the sign-off.
+1. Read `data/finance/invoices.md`. Locate the target invoice(s). For each, compute `days_late` = today minus `due`. Skip anything that's `paid` or `draft`.
+2. For each invoice, read the matching `data/clients/<slug>.md` to get the contact name + email. If `contact_email` is `(unknown yet)` or `demo@example.com`, draft against `demo@example.com` and note it.
+3. Read `context/business.md` to pull the agency voice + owner name for the sign-off.
 4. **Compose the email**, tone scaled to lateness:
    - **1-7 days late:** soft nudge. "Quick check on INV-NNN, it was due <date> for <for>, $<amount>. Let me know if there's an issue I can help with."
    - **8-21 days late:** firmer. Restate the invoice details, offer to send another copy, ask for an ETA on payment.
    - **22+ days late:** direct. Note this is the Nth reminder, ask for resolution this week, mention pausing future support if unresolved (only if appropriate to the relationship, otherwise just ask for an ETA).
    - Subject is specific: `Invoice INV-NNN, <for>, $<amount> (due <date>)`, never "Following up".
-   - Agency voice from `business.md`: no filler, no emoji, no em dashes.
+   - Agency voice from `context/business.md`: no filler, no emoji, no em dashes.
 5. **Always draft + show, never auto-send:**
    - If Gmail is connected, create the email as a **draft** there (so it's archived in Gmail's Drafts). Use the client's real `contact_email` if one is set; otherwise `demo@example.com` and note it's a demo.
    - If Gmail isn't connected, write the full email under a `## Reminder (<date>)` section on the invoice's matching client file.

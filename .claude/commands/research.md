@@ -10,7 +10,7 @@ Research the prospect so the proposal is specific to their business, not generic
 
 ## Procedure
 
-1. Read `clients/<slug>.md`. If it doesn't exist, stop and say so.
+1. Read `data/clients/<slug>.md`. If it doesn't exist, stop and say so.
 2. Run **real web search** on the business (use the business name + vertical + any location signal). Look for:
    - What they actually do + the services they offer.
    - Size signals (number of locations, team size, years in business).

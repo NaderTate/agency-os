@@ -6,16 +6,16 @@ description: One-time onboarding. Import clients or team members from a CSV (or 
 
 For agencies that aren't starting from scratch: lift an existing list (clients OR team members) into AgencyOS in one pass.
 
-**Source:** $ARGUMENTS (a CSV path; defaults to `clients.csv` if nothing is given)
+**Source:** $ARGUMENTS (a CSV path; defaults to `data/clients.csv` if nothing is given)
 
 ## Procedure
 
 1. **Read the CSV.** If the path doesn't exist, stop and say so.
 2. **Detect the type** from the header row:
-   - If it contains `business` (or `client`, `company`) → **clients import**, target dir is `clients/`.
-   - If it contains `name` plus `role` plus `rate` → **team import**, target dir is `team/`.
+   - If it contains `business` (or `client`, `company`) → **clients import**, target dir is `data/clients/`.
+   - If it contains `name` plus `role` plus `rate` → **team import**, target dir is `data/team/`.
    - Ambiguous → ask the user which.
-3. Read `services.md` if it's a clients import (for service-to-price mapping + sensible defaults).
+3. Read `context/services.md` if it's a clients import (for service-to-price mapping + sensible defaults).
 4. **For each row**, build the file:
 
    ### Clients import
@@ -29,7 +29,7 @@ For agencies that aren't starting from scratch: lift an existing list (clients O
      - closed won / signed → `won`
      - closed lost / dead → `lost`
      - anything unrecognized → `lead` (and note it).
-   - **Service** → match to a `services.md` offering (default "AI receptionist" if absent).
+   - **Service** → match to a `context/services.md` offering (default "AI receptionist" if absent).
    - **Deal value / MRR** → CSV's `setup_fee` + `monthly` columns if present, otherwise infer from the matched service.
    - **Contact name / email / source** → carry over; leave `(unknown yet)` if blank.
    - **Optional columns** (if present in the header, carry into `meta` straight): `recording`, `team`, `repo`, `clickup_list`.
@@ -43,7 +43,7 @@ For agencies that aren't starting from scratch: lift an existing list (clients O
 5. **Sidecar merge (this is what makes the data rich).** After computing the meta, check whether a sidecar exists at `data/onboarding/<type>/<slug>.md` (e.g. `data/onboarding/clients/brookside-animal-hospital.md` or `data/onboarding/team/maya-chen.md`). If yes, use the **sidecar's full content as the file body** (everything below the `meta` block). If no sidecar, generate a minimal body:
    - For clients: a one-line "Imported from `<source>` on `<date>`." note.
    - For team: a one-line "Imported from `<source>` on `<date>`." note.
-6. **Write the file** to the target dir: `clients/<slug>.md` or `team/<slug>.md`. Each file has the fenced ` ```meta ` block on top, then the body.
+6. **Write the file** to the target dir: `data/clients/<slug>.md` or `data/team/<slug>.md`. Each file has the fenced ` ```meta ` block on top, then the body.
 7. **Never overwrite.** If a file with that slug already exists, skip it and report it as a duplicate.
 8. Do NOT fabricate research or proposals for imported clients beyond what the sidecar provides. Sidecars are factual seed content; everything else comes from `/research`, `/proposal`, etc.
 

@@ -1,6 +1,6 @@
 # Playbook: Workflow Automation Build
 
-The standard build for the **Workflow Automation Build** offer in `services.md` ($1,500-5,000 setup). Scoped per process; this playbook is the generic frame, edit the task list per engagement to match the actual workflow being automated.
+The standard build for the **Workflow Automation Build** offer in `context/services.md` ($1,500-5,000 setup). Scoped per process; this playbook is the generic frame, edit the task list per engagement to match the actual workflow being automated.
 
 ## Estimated effort
 

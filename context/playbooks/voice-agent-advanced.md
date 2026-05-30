@@ -1,6 +1,6 @@
 # Playbook: Voice Agent (Advanced)
 
-The standard build for the **Voice Agent (Advanced)** offer in `services.md` ($5,000 setup + $1,000/mo). Includes everything in the AI Receptionist playbook plus outbound, advanced integrations, and qualification logic.
+The standard build for the **Voice Agent (Advanced)** offer in `context/services.md` ($5,000 setup + $1,000/mo). Includes everything in the AI Receptionist playbook plus outbound, advanced integrations, and qualification logic.
 
 Edit this file to change the standard delivery.
 

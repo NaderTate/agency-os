@@ -8,8 +8,8 @@ Your delivery team at a glance, with how loaded each person is.
 
 ## Procedure
 
-1. Glob `team/*.md` and read each one **except `_template.md`**. Parse the `meta` block (name, role, status, rate, capacity, skills).
-2. Glob `clients/*.md` (skip `_template.md`) and read each `meta` block's `team:` field. It lists assignments as `slug:hours_per_week`, comma-separated (e.g. `team: maya-chen:2, priya-nair:1`). Build, per team member, the list of clients they're on and the hours on each.
+1. Glob `data/team/*.md` and read each one **except `_template.md`**. Parse the `meta` block (name, role, status, rate, capacity, skills).
+2. Glob `data/clients/*.md` (skip `_template.md`) and read each `meta` block's `team:` field. It lists assignments as `slug:hours_per_week`, comma-separated (e.g. `team: maya-chen:2, priya-nair:1`). Build, per team member, the list of clients they're on and the hours on each.
 3. **Compute per member:**
    - **Assigned hours/week** = sum of their hours across all clients.
    - **Utilization** = assigned hours ÷ `capacity`, as a percentage. Flag anyone over 100% (overallocated) and anyone at 0% (on the bench).

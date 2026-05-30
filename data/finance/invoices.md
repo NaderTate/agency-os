@@ -7,7 +7,7 @@ The agency's accounts-receivable ledger. One row per invoice. `/invoices` reads 
 | Column | Notes |
 | --- | --- |
 | `id` | `INV-NNN`, monotonically increasing. |
-| `client` | Display name of the client (matches `clients/<slug>.md` once they exist). |
+| `client` | Display name of the client (matches `data/clients/<slug>.md` once they exist). |
 | `amount` | USD, integer (no commas in the cell, the command formats them). |
 | `for` | What it's for: `Setup`, `April support`, `May support`, etc. |
 | `issued` | YYYY-MM-DD. |
@@ -26,4 +26,4 @@ The agency's accounts-receivable ledger. One row per invoice. `/invoices` reads 
 | INV-005 | Citywide HVAC         | 1000   | May support     | 2026-05-15 | 2026-05-30 | sent   |            |
 | INV-006 | Summit Dental Group   | 2500   | Setup (deposit) | 2026-05-27 |            | draft  |            |
 
-(The clients above match the ones in `clients.csv`, so after you `/import` everything lines up. Drafts are invoices you haven't sent yet, no `due` date until you do.)
+(The clients above match the ones in `data/clients.csv`, so after you `/import` everything lines up. Drafts are invoices you haven't sent yet, no `due` date until you do.)

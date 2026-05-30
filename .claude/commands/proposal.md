@@ -10,9 +10,9 @@ Generate a proposal the prospect could actually receive. Specific, priced, in th
 
 ## Procedure
 
-1. Read `clients/<slug>.md` (including the `## Research` section) and `services.md`.
+1. Read `data/clients/<slug>.md` (including the `## Research` section) and `context/services.md`.
 2. If there's no research yet, run `/research <slug>` first (or tell the user to), a proposal without research is generic and weak.
-3. Match the client's interest to a named tier in `services.md`. Price from the catalog; present **setup and monthly separately**. Only go custom if the scope spans two tiers, and itemize the delta.
+3. Match the client's interest to a named tier in `context/services.md`. Price from the catalog; present **setup and monthly separately**. Only go custom if the scope spans two tiers, and itemize the delta.
 4. Write the proposal to `outputs/proposals/<slug>.md` with these sections:
    - **Title**, `Proposal: <Service> for <Business>` + the date.
    - **The problem**, open with the researched angle, in their terms and their dollars. One short paragraph.
