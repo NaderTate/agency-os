@@ -20,12 +20,6 @@
 - Add the daily brief layer (`/brief`).
 - Stress-test one new vertical end to end (likely law or auto).
 
-## Top bets (where time gets spent)
-
-1. **Channel:** ship the next 4 YouTube videos on schedule; case-study videos drive discovery calls.
-2. **Productize:** lock the AI Receptionist offer into a repeatable 2-week build with a delivery checklist.
-3. **Distribution:** make the agency-os repo a Skool gate that recruits builders into the audience.
-
 ## KPIs the OS tracks
 
 | KPI | Why it matters | Target |
